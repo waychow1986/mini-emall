@@ -9,7 +9,7 @@ spring:
       port: 8500
       discovery:
         prefer-ip-address: true
-        ip-address: 222.131.24.173
+        ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml

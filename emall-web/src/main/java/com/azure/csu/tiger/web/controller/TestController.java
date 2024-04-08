@@ -3,13 +3,10 @@ package com.azure.csu.tiger.web.controller;
 import com.azure.csu.tiger.grpc.lib.HelloReply;
 import com.azure.csu.tiger.grpc.lib.HelloRequest;
 import com.azure.csu.tiger.grpc.lib.SimpleGrpc;
-import io.grpc.Channel;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,17 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
 
+@RefreshScope
 @RestController
 public class TestController {
-
-//    @GrpcClient("emall-order")
-//    private Channel serverChannel;
 
     @GrpcClient("emall-order")
     private SimpleGrpc.SimpleBlockingStub orderStub;
 
-    @GrpcClient("emall-product")
-    private SimpleGrpc.SimpleBlockingStub productStub;
+//    @GrpcClient("emall-product")
+//    private SimpleGrpc.SimpleBlockingStub productStub;
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -64,10 +59,8 @@ public class TestController {
 
     @RequestMapping("/grpc/get")
     public String grpcGet(@RequestParam(required = false) String name) throws ExecutionException, InterruptedException {
-        HelloReply orderReply = orderStub.sayHello(HelloRequest.newBuilder().setName(name).build());
-        HelloReply productReply = productStub.sayHello(HelloRequest.newBuilder().setName(name).build());
+        HelloReply productReply = orderStub.sayHello(HelloRequest.newBuilder().setName(name).build());
         StringBuilder builder = new StringBuilder();
-        return builder.append(orderReply.getMessage()).append("\n\r")
-                .append(productReply.getMessage()).toString();
+        return builder.append(productReply.getMessage()).toString();
     }
 }

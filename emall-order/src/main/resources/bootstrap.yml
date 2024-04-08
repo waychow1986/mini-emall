@@ -9,10 +9,12 @@ spring:
       port: 8500
       discovery:
         metadata:
-          gRPC_port: 9091
+          gRPC_port: 9092
+        prefer-ip-address: true
+        ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml
 grpc:
   server:
-    port: 9090
+    port: 9092
