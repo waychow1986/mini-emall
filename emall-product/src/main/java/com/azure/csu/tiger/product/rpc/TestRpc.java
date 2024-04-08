@@ -6,7 +6,7 @@ import com.azure.csu.tiger.grpc.lib.SimpleGrpc;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
-@GrpcService
+//@GrpcService
 public class TestRpc extends SimpleGrpc.SimpleImplBase {
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {

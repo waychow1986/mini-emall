@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@GrpcService
+@GrpcService
 public class ProductRpc extends ProductGrpc.ProductImplBase {
 
     @Autowired

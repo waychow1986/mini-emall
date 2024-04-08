@@ -19,11 +19,11 @@ grpc:
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
-#    emall-product:
-#      address: 'discovery:///emall-product'
-#      enableKeepAlive: true
-#      keepAliveWithoutCalls: true
-#      negotiationType: plaintext
+    emall-product:
+      address: 'discovery:///emall-product'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
 #logging:
 #  level:
 #    root: debug
