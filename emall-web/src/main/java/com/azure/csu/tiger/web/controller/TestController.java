@@ -22,9 +22,6 @@ public class TestController {
     @GrpcClient("emall-order")
     private SimpleGrpc.SimpleBlockingStub orderStub;
 
-//    @GrpcClient("emall-product")
-//    private SimpleGrpc.SimpleBlockingStub productStub;
-
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
