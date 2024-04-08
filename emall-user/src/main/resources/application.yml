@@ -1,0 +1,15 @@
+spring:
+  redis:
+    database: 0
+    host: sheintest.redis.cache.windows.net
+    port: 6379
+    password: DFALHzmo7mAkMYxTCrrOqwuepRKLYIEhIAzCaAzmkg4=
+    jedis:
+      pool:
+        enable: true
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+    connect-timeout: 30000
+

@@ -1,0 +1,29 @@
+spring:
+  redis:
+    database: 0
+    host: sheintest.redis.cache.windows.net
+    port: 6380
+    password: DFALHzmo7mAkMYxTCrrOqwuepRKLYIEhIAzCaAzmkg4=
+    jedis:
+      pool:
+        enable: true
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+    connect-timeout: 30000
+grpc:
+  client:
+    emall-order:
+      address: 'discovery:///emall-order'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+    emall-product:
+      address: 'discovery:///emall-product'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+#logging:
+#  level:
+#    root: debug

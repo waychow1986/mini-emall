@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.azure.csu.tiger</groupId>
+	<artifactId>emall-project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>emall-project</name>
+	<description>Demo project for E-mall</description>
+
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>emall-common</module>
+		<module>emall-web</module>
+		<module>emall-order</module>
+		<module>emall-grpc-lib</module>
+		<module>emall-product</module>
+        <module>emall-user</module>
+    </modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.18</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+		<spring.boot.version>2.7.18</spring.boot.version>
+		<spring.cloud.version>3.1.2</spring.cloud.version>
+		<emall.base.version>0.0.1-SNAPSHOT</emall.base.version>
+		<jedis.version>3.8.0</jedis.version>
+		<mysql.connector.version>8.0.30</mysql.connector.version>
+		<jooq.codegen.version>3.14.16</jooq.codegen.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--	spring dependencies		-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring.boot.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jooq</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-client-spring-boot-starter</artifactId>
+				<version>2.15.0.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-server-spring-boot-starter</artifactId>
+				<version>2.15.0.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-bootstrap</artifactId>
+				<version>${spring.cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-discovery</artifactId>
+				<version>${spring.cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-consul-config</artifactId>
+				<version>${spring.cloud.version}</version>
+			</dependency>
+
+
+			<!--	emall dependencies		-->
+			<dependency>
+				<groupId>com.azure.csu.tiger</groupId>
+				<artifactId>emall-common</artifactId>
+				<version>${emall.base.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.azure.csu.tiger</groupId>
+				<artifactId>emall-grpc-lib</artifactId>
+				<version>${emall.base.version}</version>
+			</dependency>
+
+			<!--	third part or open source dependencies		-->
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.connector.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen</artifactId>
+				<version>${jooq.codegen.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-meta</artifactId>
+				<version>${jooq.codegen.version}</version>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+
+
+</project>

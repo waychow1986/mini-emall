@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: emall-web
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        ip-address: 222.131.24.173
+      config:
+        enabled: true
+        format: yaml
