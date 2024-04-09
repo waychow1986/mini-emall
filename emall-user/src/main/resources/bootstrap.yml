@@ -10,6 +10,8 @@ spring:
       discovery:
         metadata:
           gRPC_port: 9091
+        prefer-ip-address: true
+        ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml
