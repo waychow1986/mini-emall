@@ -12,7 +12,7 @@
     <groupId>com.azure.csu.tiger</groupId>
     <artifactId>emall-user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>emall-product</name>
+    <name>emall-user</name>
     <description>Demo project for E-mall-User</description>
 
     <dependencies>
@@ -64,7 +64,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.azure.csu.tiger.product.EmallUserApplication</mainClass>
+                            <mainClass>com.azure.csu.tiger.user.EmallUserApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,5 +1,5 @@
 FROM --platform=linux/amd64 maven:3.6-jdk-8-alpine
-ENV MAVEN_ARGS="-q -Dmaven.test.skip=true -Dmaven.javadoc.skip=true "
+ENV MAVEN_ARGS="-q -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.proto.skip=true"
 COPY ["." ,"/data"]
 RUN  mvn ${MAVEN_ARGS}  package -f /data/pom.xml
 

@@ -117,7 +117,7 @@
                         </database>
                         <target>
                             <packageName>com.azure.csu.tiger.product.jooq</packageName>
-                            <directory>target/generated-sources</directory>
+                            <directory>src/main/java</directory>
                         </target>
                     </generator>
                 </configuration>
