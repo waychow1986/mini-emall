@@ -1,8 +1,10 @@
-package com.azure.csu.tiger.order.config;
+package com.azure.csu.tiger.common.config;
 
 import brave.Tracing;
 import brave.grpc.GrpcTracing;
+import io.grpc.ClientInterceptor;
 import io.grpc.ServerInterceptor;
+import net.devh.boot.grpc.client.interceptor.GlobalClientInterceptorConfigurer;
 import net.devh.boot.grpc.server.interceptor.GlobalServerInterceptorConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,12 +34,12 @@ public class GrpcSleuthConfig {
         return grpcTracing.newServerInterceptor();
     }
 
-//    //We also create a client-side interceptor and put that in the context, this interceptor can then be injected into gRPC clients and
-//    //then applied to the managed channel.
-//    @Bean
-//    ClientInterceptor grpcClientSleuthInterceptor(GrpcTracing grpcTracing) {
-//        return grpcTracing.newClientInterceptor();
-//    }
+    //We also create a client-side interceptor and put that in the context, this interceptor can then be injected into gRPC clients and
+    //then applied to the managed channel.
+    @Bean
+    ClientInterceptor grpcClientSleuthInterceptor(GrpcTracing grpcTracing) {
+        return grpcTracing.newClientInterceptor();
+    }
 
     // Use this for debugging (or if there is no Zipkin server running on port 9411)
     @Bean
@@ -52,14 +54,14 @@ public class GrpcSleuthConfig {
     }
 
     @Bean
-    public GlobalServerInterceptorConfigurer globalInterceptorConfigurerAdapter(ServerInterceptor grpcServerSleuthInterceptor) {
+    public GlobalServerInterceptorConfigurer globalServerInterceptorConfigurerAdapter(ServerInterceptor grpcServerSleuthInterceptor) {
         return registry -> registry.add(grpcServerSleuthInterceptor);
     }
 
-//    @Bean
-//    public GlobalClientInterceptorConfigurer globalInterceptorConfigurerAdapter(ClientInterceptor grpcClientSleuthInterceptor) {
-//        return registry -> registry.add(grpcClientSleuthInterceptor);
-//    }
+    @Bean
+    public GlobalClientInterceptorConfigurer globalClientInterceptorConfigurerAdapter(ClientInterceptor grpcClientSleuthInterceptor) {
+        return registry -> registry.add(grpcClientSleuthInterceptor);
+    }
 
 }
 

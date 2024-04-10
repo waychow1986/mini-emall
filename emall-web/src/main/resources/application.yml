@@ -1,6 +1,9 @@
 spring:
   redis:
     database: 0
+    #    host: 20.252.202.28
+    #    password: 4L62C7zQZg
+    #    port: 7777
     host: sheintest.redis.cache.windows.net
     port: 6379
     password: DFALHzmo7mAkMYxTCrrOqwuepRKLYIEhIAzCaAzmkg4=
