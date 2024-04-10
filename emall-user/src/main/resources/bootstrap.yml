@@ -5,7 +5,7 @@ spring:
     name: emall-user
   cloud:
     consul:
-      host: 127.0.0.1
+      host: 20.171.143.16
       port: 8500
       discovery:
         metadata:
