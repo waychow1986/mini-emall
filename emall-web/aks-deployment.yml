@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: emall-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emall-web
+  template:
+    metadata:
+      labels:
+        app: emall-web
+    spec:
+      containers:
+        - name: emall-web
+          image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: emall-web
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: emall-web
+  type: LoadBalancer

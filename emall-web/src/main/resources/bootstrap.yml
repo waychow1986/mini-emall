@@ -1,8 +1,13 @@
 server:
   port: 8080
 spring:
+  profiles:
+    active: dev
   application:
     name: emall-web
+---
+spring:
+  profiles: dev
   cloud:
     consul:
       host: 20.171.143.16
@@ -10,6 +15,19 @@ spring:
       discovery:
         prefer-ip-address: true
         ip-address: 4.242.239.19
+      config:
+        enabled: true
+        format: yaml
+---
+spring:
+  profiles: prod
+  cloud:
+    consul:
+      host: consul-server
+      port: 8500
+#      discovery:
+#        prefer-ip-address: true
+#        ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml

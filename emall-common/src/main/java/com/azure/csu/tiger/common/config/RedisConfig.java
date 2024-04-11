@@ -1,5 +1,6 @@
 package com.azure.csu.tiger.common.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
+@Data
 @Configuration
 public class RedisConfig {
     @Value("${spring.redis.host}")
@@ -29,40 +31,6 @@ public class RedisConfig {
     private int maxActive;
     @Value("${spring.redis.connect-timeout}")
     private int connectTimeout;
-//
-//    public String getHost() {
-//        return host;
-//    }
-//
-//    public void setHost(String host) {
-//        this.host = host;
-//    }
-//
-//    public Integer getPort() {
-//        return port;
-//    }
-//
-//    public void setPort(Integer port) {
-//        this.port = port;
-//    }
-//
-//    @Bean
-//    public JedisPoolConfig jedisPoolConfig() {
-//        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-//        jedisPoolConfig.setMaxIdle(maxIdle);
-//        jedisPoolConfig.setMaxWait(Duration.ofMillis(maxWait));
-//
-//        return jedisPoolConfig;
-//    }
-//
-//    @Bean
-//    public JedisConnectionFactory redisConnectionFactory(JedisPoolConfig jedisPoolConfig) {
-//
-//        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(host, port);
-//        return new JedisConnectionFactory(config);
-//    }
-//
-
 
 //    @Bean
 //    public JedisConnectionFactory redisConnectionFactory() {
