@@ -2,6 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: emall-web
+  namespace: consul
 spec:
   replicas: 2
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: emall-web
-          image:  acreus2euap.azurecr.io/emall-web/emall-web:v0.1
+          image: acreus2euap.azurecr.io/emall-web/emall-web:v0.1
           resources:
             limits:
               cpu: 1
@@ -33,6 +34,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: emall-web
+  namespace: consul
 spec:
   ports:
     - protocol: TCP
