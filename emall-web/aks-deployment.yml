@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
         - name: emall-web
-          image: acreus2euap.azurecr.io/emall-web/emall-web:v0.1
+          image: acreus2euap.azurecr.io/emall-web/emall-web:v0.3
           resources:
             limits:
-              cpu: 1
-              memory: 256Mi
+              cpu: 2
+              memory: 1024Mi
             requests:
-              cpu: 1
-              memory: 256Mi
+              cpu: 2
+              memory: 1024Mi
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

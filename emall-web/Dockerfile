@@ -11,5 +11,4 @@ ENV JVM_OPT=""
 ENV REGSERVER_URL=http://rs
 COPY --from=0 "/data/${MODULE_NAME}/target/${MODULE_NAME}-${VERSION}.jar" "/app/app.jar"
 COPY --from=0 "/data/${MODULE_NAME}/target/lib/" "/app/lib/"
-COPY "./start.sh" "/app/start.sh"
-ENTRYPOINT ["sh","/app/start.sh"]
+ENTRYPOINT java -jar '-Dspring.profiles.active=prod' /app/app.jar
