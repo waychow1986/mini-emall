@@ -7,7 +7,9 @@ spring:
     name: emall-web
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   cloud:
     consul:
       host: 20.171.143.16
@@ -20,7 +22,9 @@ spring:
         format: yaml
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
   cloud:
     consul:
       host: consul-server
