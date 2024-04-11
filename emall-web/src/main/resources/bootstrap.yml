@@ -29,8 +29,8 @@ spring:
     consul:
       host: consul-server
       port: 8500
-#      discovery:
-#        prefer-ip-address: true
+      discovery:
+        prefer-ip-address: true
 #        ip-address: 4.242.239.19
       config:
         enabled: true
