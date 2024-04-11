@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: emall-web
-          image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+          image:  acreus2euap.azurecr.io/emall-web/emall-web:v0.1
           resources:
             limits:
-              cpu: 250m
+              cpu: 1
               memory: 256Mi
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: 1
+              memory: 256Mi
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
