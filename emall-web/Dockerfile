@@ -4,7 +4,7 @@ COPY ["." ,"/data"]
 RUN  mvn ${MAVEN_ARGS}  package -f /data/pom.xml
 
 FROM --platform=linux/amd64 openjdk:8-alpine3.9
-EXPOSE 30460
+EXPOSE 8080
 ENV MODULE_NAME=emall-web
 ENV VERSION=0.0.1-SNAPSHOT
 ENV JVM_OPT=""
