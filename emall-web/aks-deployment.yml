@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: emall-web
-          image: acrmall.azurecr.io/emall-web:v0.3
+          image: acrmall.azurecr.io/emall-web:v0.4
           resources:
             limits:
               cpu: 2
