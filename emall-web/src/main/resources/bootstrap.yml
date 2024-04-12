@@ -15,6 +15,7 @@ spring:
       host: 20.171.143.16
       port: 8500
       discovery:
+        instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
         ip-address: 4.242.239.19
       config:
@@ -30,6 +31,7 @@ spring:
       host: consul-server.consul.svc.cluster.local
       port: 8500
       discovery:
+        instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
 #        ip-address: 4.242.239.19
       config:
