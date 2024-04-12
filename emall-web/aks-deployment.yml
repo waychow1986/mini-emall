@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: emall-web
-          image: acrmall.azurecr.io/emall-web:v0.2
+          image: acrmall.azurecr.io/emall-web:v0.3
           resources:
             limits:
               cpu: 2
@@ -26,6 +26,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
