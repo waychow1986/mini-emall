@@ -4,11 +4,7 @@ COPY ["." ,"/data"]
 RUN  mvn ${MAVEN_ARGS}  package -f /data/pom.xml
 
 FROM --platform=linux/amd64 openjdk:8-alpine3.9
-EXPOSE 8080
-ENV MODULE_NAME=emall-product
-ENV VERSION=0.0.1-SNAPSHOT
-ENV JVM_OPT=""
-ENV REGSERVER_URL=http://rs
-COPY --from=0 "/data/${MODULE_NAME}/target/${MODULE_NAME}-${VERSION}.jar" "/app/app.jar"
+EXPOSE 8082
+COPY --from=0 "/data/emall-product/target/emall-product-0.0.1-SNAPSHOT.jar" "/app/emall-product-0.0.1-SNAPSHOT.jar"
 COPY --from=0 "/data/${MODULE_NAME}/target/lib/" "/app/lib/"
-ENTRYPOINT java -jar '-Dconsul_client_ip=${HOST_IP}' /app/app.jar --spring.profiles.active=prod
+ENTRYPOINT java -jar '-Dconsul_client_ip=${HOST_IP}' /app/emall-product-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
