@@ -28,7 +28,7 @@ spring:
       on-profile: prod
   cloud:
     consul:
-      host: 20.171.143.16
+      host: ${HOST_IP}
       port: 8500
       discovery:
         instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}

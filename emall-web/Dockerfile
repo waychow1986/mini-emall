@@ -11,4 +11,4 @@ ENV JVM_OPT=""
 ENV REGSERVER_URL=http://rs
 COPY --from=0 "/data/${MODULE_NAME}/target/${MODULE_NAME}-${VERSION}.jar" "/app/app.jar"
 COPY --from=0 "/data/${MODULE_NAME}/target/lib/" "/app/lib/"
-ENTRYPOINT java -jar '-Dspring.profiles.active=prod -DHOST_IP=${HOST_IP}' /app/app.jar
+ENTRYPOINT java -jar '-DHOST_IP=${HOST_IP}' /app/app.jar --spring.profiles.active=prod
