@@ -4,7 +4,7 @@ metadata:
   name: emall-web
   namespace: emall
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: emall-web
