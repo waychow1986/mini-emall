@@ -27,7 +27,7 @@ spring:
       on-profile: prod
   cloud:
     consul:
-      host: consul-server
+      host: consul-server.consul.svc.cluster.local
       port: 8500
       discovery:
         prefer-ip-address: true
