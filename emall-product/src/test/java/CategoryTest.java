@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Collections;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmallProductApplication.class)
@@ -23,13 +24,68 @@ public class CategoryTest {
     private CategoryService categoryService;
 
     @Test
-    public void createRecord() {
-        CategoryRecord record = new CategoryRecord();
-        record.setName("衣服");
-        record.setCreateUserId(123L);
-        record.setModifyUserId(123L);
-        Long id = categoryDao.createCategory(record);
-        System.out.println("id is: " + id);
+    public void createCategorys() {
+        List<CategoryRecord> datas = Lists.newArrayList();
+        for (int i = 0; i < 100; i++) {
+            CategoryRecord record = new CategoryRecord();
+            int suffix = i + 1;
+            record.setName("类目-"+suffix);
+            record.setParentId(-1L);
+            record.setIsLeaf((byte)0);
+            record.setSort(suffix);
+            record.setIsDeleted((byte)0);
+            record.setCreateUserId(1L);
+            record.setModifyUserId(1L);
+            datas.add(record);
+        }
+        categoryDao.createCategorys(datas);
+
+        datas = Lists.newArrayList();
+        for (int i = 0; i < 100; i++) {
+            long suffix_1 = i + 1;
+            for (int j = 0; j < 100; j++) {
+                CategoryRecord record = new CategoryRecord();
+                long suffix_2 = j + 1;
+                record.setName("类目-" + suffix_1 + "-" + suffix_2);
+                record.setParentId(suffix_1);
+                record.setIsLeaf((byte) 0);
+                record.setSort((int)suffix_2);
+                record.setIsDeleted((byte) 0);
+                record.setCreateUserId(1L);
+                record.setModifyUserId(1L);
+                datas.add(record);
+                if (datas.size() == 5000) {
+                    categoryDao.createCategorys(datas);
+                    datas = Lists.newArrayList();
+                }
+            }
+        }
+        categoryDao.createCategorys(datas);
+
+        datas = Lists.newArrayList();
+        for (int i = 0; i < 100; i++) {
+            long suffix_1 = i + 1;
+            for (int j = 0; j < 100; j++) {
+                long suffix_2 = j + 1;
+                for (int k = 0; k < 1000; k++) {
+                    CategoryRecord record = new CategoryRecord();
+                    long suffix_3 = k + 1;
+                    record.setName("类目-" + suffix_1 + "-" + suffix_2 + "-" + suffix_3);
+                    record.setParentId(suffix_1 * 100 + suffix_2);
+                    record.setIsLeaf((byte) 0);
+                    record.setSort((int) suffix_3);
+                    record.setIsDeleted((byte) 0);
+                    record.setCreateUserId(1L);
+                    record.setModifyUserId(1L);
+                    datas.add(record);
+                    if (datas.size() == 5000) {
+                        categoryDao.createCategorys(datas);
+                        datas = Lists.newArrayList();
+                    }
+                }
+            }
+        }
+        categoryDao.createCategorys(datas);
     }
 
     @Test

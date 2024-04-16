@@ -17,7 +17,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row11;
+import org.jooq.Row13;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -58,6 +58,16 @@ public class Sku extends TableImpl<SkuRecord> {
      * The column <code>product_center.sku.spu_id</code>. SPU id
      */
     public final TableField<SkuRecord, Long> SPU_ID = createField(DSL.name("spu_id"), SQLDataType.BIGINT.nullable(false), this, "SPU id");
+
+    /**
+     * The column <code>product_center.sku.category_id</code>. 类目id, 冗余字段，方便查询
+     */
+    public final TableField<SkuRecord, Long> CATEGORY_ID = createField(DSL.name("category_id"), SQLDataType.BIGINT.nullable(false), this, "类目id, 冗余字段，方便查询");
+
+    /**
+     * The column <code>product_center.sku.brand_id</code>. 品牌id, 冗余字段，方便查询
+     */
+    public final TableField<SkuRecord, Long> BRAND_ID = createField(DSL.name("brand_id"), SQLDataType.BIGINT, this, "品牌id, 冗余字段，方便查询");
 
     /**
      * The column <code>product_center.sku.name</code>. 商品名称或标题
@@ -184,11 +194,11 @@ public class Sku extends TableImpl<SkuRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row11 type methods
+    // Row13 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> fieldsRow() {
-        return (Row11) super.fieldsRow();
+    public Row13<Long, Long, Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> fieldsRow() {
+        return (Row13) super.fieldsRow();
     }
 }

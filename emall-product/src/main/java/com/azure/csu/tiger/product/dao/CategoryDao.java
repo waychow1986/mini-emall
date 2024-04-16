@@ -2,6 +2,7 @@ package com.azure.csu.tiger.product.dao;
 
 import com.azure.csu.tiger.product.jooq.tables.records.CategoryRecord;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface CategoryDao {
@@ -12,6 +13,9 @@ public interface CategoryDao {
      * @return
      */
     Long createCategory(CategoryRecord record);
+
+    void createCategorys(Collection<CategoryRecord> records);
+
 
     /**
      * 根据类目id查询
@@ -27,4 +31,6 @@ public interface CategoryDao {
      * @return
      */
     List<CategoryRecord> listCategory(String name, Long parentId);
+
+    List<CategoryRecord> listCategory(Collection<Long> ids);
 }

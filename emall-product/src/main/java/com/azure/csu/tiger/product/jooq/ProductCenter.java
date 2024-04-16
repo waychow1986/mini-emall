@@ -7,7 +7,6 @@ package com.azure.csu.tiger.product.jooq;
 import com.azure.csu.tiger.product.jooq.tables.Attribute;
 import com.azure.csu.tiger.product.jooq.tables.AttributeCategory;
 import com.azure.csu.tiger.product.jooq.tables.AttributeEnum;
-import com.azure.csu.tiger.product.jooq.tables.AttributeValue;
 import com.azure.csu.tiger.product.jooq.tables.Brand;
 import com.azure.csu.tiger.product.jooq.tables.Category;
 import com.azure.csu.tiger.product.jooq.tables.CategoryBrand;
@@ -16,9 +15,11 @@ import com.azure.csu.tiger.product.jooq.tables.CouponRange;
 import com.azure.csu.tiger.product.jooq.tables.CouponTaken;
 import com.azure.csu.tiger.product.jooq.tables.CouponUsed;
 import com.azure.csu.tiger.product.jooq.tables.Sku;
+import com.azure.csu.tiger.product.jooq.tables.SkuAttributeValue;
 import com.azure.csu.tiger.product.jooq.tables.SkuComment;
 import com.azure.csu.tiger.product.jooq.tables.SkuImage;
 import com.azure.csu.tiger.product.jooq.tables.Spu;
+import com.azure.csu.tiger.product.jooq.tables.SpuAttributeValue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,11 +56,6 @@ public class ProductCenter extends SchemaImpl {
      * 属性枚举值表
      */
     public final AttributeEnum ATTRIBUTE_ENUM = AttributeEnum.ATTRIBUTE_ENUM;
-
-    /**
-     * SPU或SKU属性值表
-     */
-    public final AttributeValue ATTRIBUTE_VALUE = AttributeValue.ATTRIBUTE_VALUE;
 
     /**
      * 品牌表
@@ -102,6 +98,11 @@ public class ProductCenter extends SchemaImpl {
     public final Sku SKU = Sku.SKU;
 
     /**
+     * SKU属性值表
+     */
+    public final SkuAttributeValue SKU_ATTRIBUTE_VALUE = SkuAttributeValue.SKU_ATTRIBUTE_VALUE;
+
+    /**
      * 商品评论表
      */
     public final SkuComment SKU_COMMENT = SkuComment.SKU_COMMENT;
@@ -115,6 +116,11 @@ public class ProductCenter extends SchemaImpl {
      * SPU表
      */
     public final Spu SPU = Spu.SPU;
+
+    /**
+     * SPU属性值表
+     */
+    public final SpuAttributeValue SPU_ATTRIBUTE_VALUE = SpuAttributeValue.SPU_ATTRIBUTE_VALUE;
 
     /**
      * No further instances allowed
@@ -135,7 +141,6 @@ public class ProductCenter extends SchemaImpl {
             Attribute.ATTRIBUTE,
             AttributeCategory.ATTRIBUTE_CATEGORY,
             AttributeEnum.ATTRIBUTE_ENUM,
-            AttributeValue.ATTRIBUTE_VALUE,
             Brand.BRAND,
             Category.CATEGORY,
             CategoryBrand.CATEGORY_BRAND,
@@ -144,8 +149,10 @@ public class ProductCenter extends SchemaImpl {
             CouponTaken.COUPON_TAKEN,
             CouponUsed.COUPON_USED,
             Sku.SKU,
+            SkuAttributeValue.SKU_ATTRIBUTE_VALUE,
             SkuComment.SKU_COMMENT,
             SkuImage.SKU_IMAGE,
-            Spu.SPU);
+            Spu.SPU,
+            SpuAttributeValue.SPU_ATTRIBUTE_VALUE);
     }
 }

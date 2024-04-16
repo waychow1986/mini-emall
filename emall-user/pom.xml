@@ -46,6 +46,16 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -108,7 +118,7 @@
                         </database>
                         <target>
                             <packageName>com.azure.csu.tiger.user.jooq</packageName>
-                            <directory>target/generated-sources</directory>
+                            <directory>src/main/java</directory>
                         </target>
                     </generator>
                 </configuration>

@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record11;
-import org.jooq.Row11;
+import org.jooq.Record13;
+import org.jooq.Row13;
 import org.jooq.impl.UpdatableRecordImpl;
 
 
@@ -19,7 +19,7 @@ import org.jooq.impl.UpdatableRecordImpl;
  * SKU表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
-public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record11<Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> {
+public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record13<Long, Long, Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,129 +52,157 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     /**
+     * Setter for <code>product_center.sku.category_id</code>. 类目id, 冗余字段，方便查询
+     */
+    public void setCategoryId(Long value) {
+        set(2, value);
+    }
+
+    /**
+     * Getter for <code>product_center.sku.category_id</code>. 类目id, 冗余字段，方便查询
+     */
+    public Long getCategoryId() {
+        return (Long) get(2);
+    }
+
+    /**
+     * Setter for <code>product_center.sku.brand_id</code>. 品牌id, 冗余字段，方便查询
+     */
+    public void setBrandId(Long value) {
+        set(3, value);
+    }
+
+    /**
+     * Getter for <code>product_center.sku.brand_id</code>. 品牌id, 冗余字段，方便查询
+     */
+    public Long getBrandId() {
+        return (Long) get(3);
+    }
+
+    /**
      * Setter for <code>product_center.sku.name</code>. 商品名称或标题
      */
     public void setName(String value) {
-        set(2, value);
+        set(4, value);
     }
 
     /**
      * Getter for <code>product_center.sku.name</code>. 商品名称或标题
      */
     public String getName() {
-        return (String) get(2);
+        return (String) get(4);
     }
 
     /**
      * Setter for <code>product_center.sku.price</code>. 价格，单位为分
      */
     public void setPrice(Long value) {
-        set(3, value);
+        set(5, value);
     }
 
     /**
      * Getter for <code>product_center.sku.price</code>. 价格，单位为分
      */
     public Long getPrice() {
-        return (Long) get(3);
+        return (Long) get(5);
     }
 
     /**
      * Setter for <code>product_center.sku.stock</code>. 库存数量
      */
     public void setStock(Long value) {
-        set(4, value);
+        set(6, value);
     }
 
     /**
      * Getter for <code>product_center.sku.stock</code>. 库存数量
      */
     public Long getStock() {
-        return (Long) get(4);
+        return (Long) get(6);
     }
 
     /**
      * Setter for <code>product_center.sku.is_enable</code>. 是否有效 0-否，1-是
      */
     public void setIsEnable(Byte value) {
-        set(5, value);
+        set(7, value);
     }
 
     /**
      * Getter for <code>product_center.sku.is_enable</code>. 是否有效 0-否，1-是
      */
     public Byte getIsEnable() {
-        return (Byte) get(5);
+        return (Byte) get(7);
     }
 
     /**
      * Setter for <code>product_center.sku.is_deleted</code>. 是否删除 0-否，1-是
      */
     public void setIsDeleted(Byte value) {
-        set(6, value);
+        set(8, value);
     }
 
     /**
      * Getter for <code>product_center.sku.is_deleted</code>. 是否删除 0-否，1-是
      */
     public Byte getIsDeleted() {
-        return (Byte) get(6);
+        return (Byte) get(8);
     }
 
     /**
      * Setter for <code>product_center.sku.create_time</code>.
      */
     public void setCreateTime(LocalDateTime value) {
-        set(7, value);
+        set(9, value);
     }
 
     /**
      * Getter for <code>product_center.sku.create_time</code>.
      */
     public LocalDateTime getCreateTime() {
-        return (LocalDateTime) get(7);
+        return (LocalDateTime) get(9);
     }
 
     /**
      * Setter for <code>product_center.sku.modify_time</code>.
      */
     public void setModifyTime(LocalDateTime value) {
-        set(8, value);
+        set(10, value);
     }
 
     /**
      * Getter for <code>product_center.sku.modify_time</code>.
      */
     public LocalDateTime getModifyTime() {
-        return (LocalDateTime) get(8);
+        return (LocalDateTime) get(10);
     }
 
     /**
      * Setter for <code>product_center.sku.create_user_id</code>.
      */
     public void setCreateUserId(Long value) {
-        set(9, value);
+        set(11, value);
     }
 
     /**
      * Getter for <code>product_center.sku.create_user_id</code>.
      */
     public Long getCreateUserId() {
-        return (Long) get(9);
+        return (Long) get(11);
     }
 
     /**
      * Setter for <code>product_center.sku.modify_user_id</code>.
      */
     public void setModifyUserId(Long value) {
-        set(10, value);
+        set(12, value);
     }
 
     /**
      * Getter for <code>product_center.sku.modify_user_id</code>.
      */
     public Long getModifyUserId() {
-        return (Long) get(10);
+        return (Long) get(12);
     }
 
     // -------------------------------------------------------------------------
@@ -187,17 +215,17 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     // -------------------------------------------------------------------------
-    // Record11 type implementation
+    // Record13 type implementation
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> fieldsRow() {
-        return (Row11) super.fieldsRow();
+    public Row13<Long, Long, Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> fieldsRow() {
+        return (Row13) super.fieldsRow();
     }
 
     @Override
-    public Row11<Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> valuesRow() {
-        return (Row11) super.valuesRow();
+    public Row13<Long, Long, Long, Long, String, Long, Long, Byte, Byte, LocalDateTime, LocalDateTime, Long, Long> valuesRow() {
+        return (Row13) super.valuesRow();
     }
 
     @Override
@@ -211,47 +239,57 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     @Override
-    public Field<String> field3() {
-        return Sku.SKU.NAME;
+    public Field<Long> field3() {
+        return Sku.SKU.CATEGORY_ID;
     }
 
     @Override
     public Field<Long> field4() {
+        return Sku.SKU.BRAND_ID;
+    }
+
+    @Override
+    public Field<String> field5() {
+        return Sku.SKU.NAME;
+    }
+
+    @Override
+    public Field<Long> field6() {
         return Sku.SKU.PRICE;
     }
 
     @Override
-    public Field<Long> field5() {
+    public Field<Long> field7() {
         return Sku.SKU.STOCK;
     }
 
     @Override
-    public Field<Byte> field6() {
+    public Field<Byte> field8() {
         return Sku.SKU.IS_ENABLE;
     }
 
     @Override
-    public Field<Byte> field7() {
+    public Field<Byte> field9() {
         return Sku.SKU.IS_DELETED;
     }
 
     @Override
-    public Field<LocalDateTime> field8() {
+    public Field<LocalDateTime> field10() {
         return Sku.SKU.CREATE_TIME;
     }
 
     @Override
-    public Field<LocalDateTime> field9() {
+    public Field<LocalDateTime> field11() {
         return Sku.SKU.MODIFY_TIME;
     }
 
     @Override
-    public Field<Long> field10() {
+    public Field<Long> field12() {
         return Sku.SKU.CREATE_USER_ID;
     }
 
     @Override
-    public Field<Long> field11() {
+    public Field<Long> field13() {
         return Sku.SKU.MODIFY_USER_ID;
     }
 
@@ -266,47 +304,57 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     @Override
-    public String component3() {
-        return getName();
+    public Long component3() {
+        return getCategoryId();
     }
 
     @Override
     public Long component4() {
+        return getBrandId();
+    }
+
+    @Override
+    public String component5() {
+        return getName();
+    }
+
+    @Override
+    public Long component6() {
         return getPrice();
     }
 
     @Override
-    public Long component5() {
+    public Long component7() {
         return getStock();
     }
 
     @Override
-    public Byte component6() {
+    public Byte component8() {
         return getIsEnable();
     }
 
     @Override
-    public Byte component7() {
+    public Byte component9() {
         return getIsDeleted();
     }
 
     @Override
-    public LocalDateTime component8() {
+    public LocalDateTime component10() {
         return getCreateTime();
     }
 
     @Override
-    public LocalDateTime component9() {
+    public LocalDateTime component11() {
         return getModifyTime();
     }
 
     @Override
-    public Long component10() {
+    public Long component12() {
         return getCreateUserId();
     }
 
     @Override
-    public Long component11() {
+    public Long component13() {
         return getModifyUserId();
     }
 
@@ -321,47 +369,57 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     @Override
-    public String value3() {
-        return getName();
+    public Long value3() {
+        return getCategoryId();
     }
 
     @Override
     public Long value4() {
+        return getBrandId();
+    }
+
+    @Override
+    public String value5() {
+        return getName();
+    }
+
+    @Override
+    public Long value6() {
         return getPrice();
     }
 
     @Override
-    public Long value5() {
+    public Long value7() {
         return getStock();
     }
 
     @Override
-    public Byte value6() {
+    public Byte value8() {
         return getIsEnable();
     }
 
     @Override
-    public Byte value7() {
+    public Byte value9() {
         return getIsDeleted();
     }
 
     @Override
-    public LocalDateTime value8() {
+    public LocalDateTime value10() {
         return getCreateTime();
     }
 
     @Override
-    public LocalDateTime value9() {
+    public LocalDateTime value11() {
         return getModifyTime();
     }
 
     @Override
-    public Long value10() {
+    public Long value12() {
         return getCreateUserId();
     }
 
     @Override
-    public Long value11() {
+    public Long value13() {
         return getModifyUserId();
     }
 
@@ -378,61 +436,73 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     }
 
     @Override
-    public SkuRecord value3(String value) {
-        setName(value);
+    public SkuRecord value3(Long value) {
+        setCategoryId(value);
         return this;
     }
 
     @Override
     public SkuRecord value4(Long value) {
+        setBrandId(value);
+        return this;
+    }
+
+    @Override
+    public SkuRecord value5(String value) {
+        setName(value);
+        return this;
+    }
+
+    @Override
+    public SkuRecord value6(Long value) {
         setPrice(value);
         return this;
     }
 
     @Override
-    public SkuRecord value5(Long value) {
+    public SkuRecord value7(Long value) {
         setStock(value);
         return this;
     }
 
     @Override
-    public SkuRecord value6(Byte value) {
+    public SkuRecord value8(Byte value) {
         setIsEnable(value);
         return this;
     }
 
     @Override
-    public SkuRecord value7(Byte value) {
+    public SkuRecord value9(Byte value) {
         setIsDeleted(value);
         return this;
     }
 
     @Override
-    public SkuRecord value8(LocalDateTime value) {
+    public SkuRecord value10(LocalDateTime value) {
         setCreateTime(value);
         return this;
     }
 
     @Override
-    public SkuRecord value9(LocalDateTime value) {
+    public SkuRecord value11(LocalDateTime value) {
         setModifyTime(value);
         return this;
     }
 
     @Override
-    public SkuRecord value10(Long value) {
+    public SkuRecord value12(Long value) {
         setCreateUserId(value);
         return this;
     }
 
     @Override
-    public SkuRecord value11(Long value) {
+    public SkuRecord value13(Long value) {
         setModifyUserId(value);
         return this;
     }
 
     @Override
-    public SkuRecord values(Long value1, Long value2, String value3, Long value4, Long value5, Byte value6, Byte value7, LocalDateTime value8, LocalDateTime value9, Long value10, Long value11) {
+    public SkuRecord values(Long value1, Long value2, Long value3, Long value4, String value5, Long value6, Long value7, Byte value8, Byte value9, LocalDateTime value10, LocalDateTime value11, Long value12, Long value13) {
         value1(value1);
         value2(value2);
         value3(value3);
@@ -444,6 +514,8 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
         value9(value9);
         value10(value10);
         value11(value11);
+        value12(value12);
+        value13(value13);
         return this;
     }
 
@@ -461,11 +533,13 @@ public class SkuRecord extends UpdatableRecordImpl<SkuRecord> implements Record1
     /**
      * Create a detached, initialised SkuRecord
      */
-    public SkuRecord(Long id, Long spuId, String name, Long price, Long stock, Byte isEnable, Byte isDeleted, LocalDateTime createTime, LocalDateTime modifyTime, Long createUserId, Long modifyUserId) {
+    public SkuRecord(Long id, Long spuId, Long categoryId, Long brandId, String name, Long price, Long stock, Byte isEnable, Byte isDeleted, LocalDateTime createTime, LocalDateTime modifyTime, Long createUserId, Long modifyUserId) {
         super(Sku.SKU);
 
         setId(id);
         setSpuId(spuId);
+        setCategoryId(categoryId);
+        setBrandId(brandId);
         setName(name);
         setPrice(price);
         setStock(stock);

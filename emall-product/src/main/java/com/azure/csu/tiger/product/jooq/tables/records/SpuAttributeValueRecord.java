@@ -4,7 +4,7 @@
 package com.azure.csu.tiger.product.jooq.tables.records;
 
 
-import com.azure.csu.tiger.product.jooq.tables.AttributeValue;
+import com.azure.csu.tiger.product.jooq.tables.SpuAttributeValue;
 
 import java.time.LocalDateTime;
 
@@ -16,120 +16,120 @@ import org.jooq.impl.UpdatableRecordImpl;
 
 
 /**
- * SPU或SKU属性值表
+ * SPU属性值表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
-public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueRecord> implements Record8<Long, Long, Long, String, LocalDateTime, LocalDateTime, Long, Long> {
+public class SpuAttributeValueRecord extends UpdatableRecordImpl<SpuAttributeValueRecord> implements Record8<Long, Long, Long, String, LocalDateTime, LocalDateTime, Long, Long> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>product_center.attribute_value.id</code>.
+     * Setter for <code>product_center.spu_attribute_value.id</code>.
      */
     public void setId(Long value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.id</code>.
+     * Getter for <code>product_center.spu_attribute_value.id</code>.
      */
     public Long getId() {
         return (Long) get(0);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.spu_or_sku_id</code>. SPU或者SKU id
+     * Setter for <code>product_center.spu_attribute_value.spu_id</code>. SPU id
      */
-    public void setSpuOrSkuId(Long value) {
+    public void setSpuId(Long value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.spu_or_sku_id</code>. SPU或者SKU id
+     * Getter for <code>product_center.spu_attribute_value.spu_id</code>. SPU id
      */
-    public Long getSpuOrSkuId() {
+    public Long getSpuId() {
         return (Long) get(1);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.attribute_id</code>. 属性id
+     * Setter for <code>product_center.spu_attribute_value.attribute_id</code>. 属性id
      */
     public void setAttributeId(Long value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.attribute_id</code>. 属性id
+     * Getter for <code>product_center.spu_attribute_value.attribute_id</code>. 属性id
      */
     public Long getAttributeId() {
         return (Long) get(2);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.value</code>. 属性值
+     * Setter for <code>product_center.spu_attribute_value.value</code>. 属性值
      */
     public void setValue(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.value</code>. 属性值
+     * Getter for <code>product_center.spu_attribute_value.value</code>. 属性值
      */
     public String getValue() {
         return (String) get(3);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.create_time</code>.
+     * Setter for <code>product_center.spu_attribute_value.create_time</code>.
      */
     public void setCreateTime(LocalDateTime value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.create_time</code>.
+     * Getter for <code>product_center.spu_attribute_value.create_time</code>.
      */
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(4);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.modify_time</code>.
+     * Setter for <code>product_center.spu_attribute_value.modify_time</code>.
      */
     public void setModifyTime(LocalDateTime value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.modify_time</code>.
+     * Getter for <code>product_center.spu_attribute_value.modify_time</code>.
      */
     public LocalDateTime getModifyTime() {
         return (LocalDateTime) get(5);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.create_user_id</code>.
+     * Setter for <code>product_center.spu_attribute_value.create_user_id</code>.
      */
     public void setCreateUserId(Long value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.create_user_id</code>.
+     * Getter for <code>product_center.spu_attribute_value.create_user_id</code>.
      */
     public Long getCreateUserId() {
         return (Long) get(6);
     }
 
     /**
-     * Setter for <code>product_center.attribute_value.modify_user_id</code>.
+     * Setter for <code>product_center.spu_attribute_value.modify_user_id</code>.
      */
     public void setModifyUserId(Long value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>product_center.attribute_value.modify_user_id</code>.
+     * Getter for <code>product_center.spu_attribute_value.modify_user_id</code>.
      */
     public Long getModifyUserId() {
         return (Long) get(7);
@@ -160,42 +160,42 @@ public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueReco
 
     @Override
     public Field<Long> field1() {
-        return AttributeValue.ATTRIBUTE_VALUE.ID;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.ID;
     }
 
     @Override
     public Field<Long> field2() {
-        return AttributeValue.ATTRIBUTE_VALUE.SPU_OR_SKU_ID;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.SPU_ID;
     }
 
     @Override
     public Field<Long> field3() {
-        return AttributeValue.ATTRIBUTE_VALUE.ATTRIBUTE_ID;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.ATTRIBUTE_ID;
     }
 
     @Override
     public Field<String> field4() {
-        return AttributeValue.ATTRIBUTE_VALUE.VALUE;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.VALUE;
     }
 
     @Override
     public Field<LocalDateTime> field5() {
-        return AttributeValue.ATTRIBUTE_VALUE.CREATE_TIME;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.CREATE_TIME;
     }
 
     @Override
     public Field<LocalDateTime> field6() {
-        return AttributeValue.ATTRIBUTE_VALUE.MODIFY_TIME;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.MODIFY_TIME;
     }
 
     @Override
     public Field<Long> field7() {
-        return AttributeValue.ATTRIBUTE_VALUE.CREATE_USER_ID;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.CREATE_USER_ID;
     }
 
     @Override
     public Field<Long> field8() {
-        return AttributeValue.ATTRIBUTE_VALUE.MODIFY_USER_ID;
+        return SpuAttributeValue.SPU_ATTRIBUTE_VALUE.MODIFY_USER_ID;
     }
 
     @Override
@@ -205,7 +205,7 @@ public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueReco
 
     @Override
     public Long component2() {
-        return getSpuOrSkuId();
+        return getSpuId();
     }
 
     @Override
@@ -245,7 +245,7 @@ public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueReco
 
     @Override
     public Long value2() {
-        return getSpuOrSkuId();
+        return getSpuId();
     }
 
     @Override
@@ -279,55 +279,55 @@ public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueReco
     }
 
     @Override
-    public AttributeValueRecord value1(Long value) {
+    public SpuAttributeValueRecord value1(Long value) {
         setId(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value2(Long value) {
-        setSpuOrSkuId(value);
+    public SpuAttributeValueRecord value2(Long value) {
+        setSpuId(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value3(Long value) {
+    public SpuAttributeValueRecord value3(Long value) {
         setAttributeId(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value4(String value) {
+    public SpuAttributeValueRecord value4(String value) {
         setValue(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value5(LocalDateTime value) {
+    public SpuAttributeValueRecord value5(LocalDateTime value) {
         setCreateTime(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value6(LocalDateTime value) {
+    public SpuAttributeValueRecord value6(LocalDateTime value) {
         setModifyTime(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value7(Long value) {
+    public SpuAttributeValueRecord value7(Long value) {
         setCreateUserId(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord value8(Long value) {
+    public SpuAttributeValueRecord value8(Long value) {
         setModifyUserId(value);
         return this;
     }
 
     @Override
-    public AttributeValueRecord values(Long value1, Long value2, Long value3, String value4, LocalDateTime value5, LocalDateTime value6, Long value7, Long value8) {
+    public SpuAttributeValueRecord values(Long value1, Long value2, Long value3, String value4, LocalDateTime value5, LocalDateTime value6, Long value7, Long value8) {
         value1(value1);
         value2(value2);
         value3(value3);
@@ -344,20 +344,20 @@ public class AttributeValueRecord extends UpdatableRecordImpl<AttributeValueReco
     // -------------------------------------------------------------------------
 
     /**
-     * Create a detached AttributeValueRecord
+     * Create a detached SpuAttributeValueRecord
      */
-    public AttributeValueRecord() {
-        super(AttributeValue.ATTRIBUTE_VALUE);
+    public SpuAttributeValueRecord() {
+        super(SpuAttributeValue.SPU_ATTRIBUTE_VALUE);
     }
 
     /**
-     * Create a detached, initialised AttributeValueRecord
+     * Create a detached, initialised SpuAttributeValueRecord
      */
-    public AttributeValueRecord(Long id, Long spuOrSkuId, Long attributeId, String value, LocalDateTime createTime, LocalDateTime modifyTime, Long createUserId, Long modifyUserId) {
-        super(AttributeValue.ATTRIBUTE_VALUE);
+    public SpuAttributeValueRecord(Long id, Long spuId, Long attributeId, String value, LocalDateTime createTime, LocalDateTime modifyTime, Long createUserId, Long modifyUserId) {
+        super(SpuAttributeValue.SPU_ATTRIBUTE_VALUE);
 
         setId(id);
-        setSpuOrSkuId(spuOrSkuId);
+        setSpuId(spuId);
         setAttributeId(attributeId);
         setValue(value);
         setCreateTime(createTime);
