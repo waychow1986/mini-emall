@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -23,57 +24,37 @@ public class CategoryTest {
     @Autowired
     private CategoryService categoryService;
 
+    @Value("${test.mock.data}")
+    private boolean mockData;
+
     @Test
     public void createCategorys() {
-        List<CategoryRecord> datas = Lists.newArrayList();
-        for (int i = 0; i < 100; i++) {
-            CategoryRecord record = new CategoryRecord();
-            int suffix = i + 1;
-            record.setName("类目-"+suffix);
-            record.setParentId(-1L);
-            record.setIsLeaf((byte)0);
-            record.setSort(suffix);
-            record.setIsDeleted((byte)0);
-            record.setCreateUserId(1L);
-            record.setModifyUserId(1L);
-            datas.add(record);
-        }
-        categoryDao.createCategorys(datas);
-
-        datas = Lists.newArrayList();
-        for (int i = 0; i < 100; i++) {
-            long suffix_1 = i + 1;
-            for (int j = 0; j < 100; j++) {
+        if (mockData) {
+            List<CategoryRecord> datas = Lists.newArrayList();
+            for (int i = 0; i < 100; i++) {
                 CategoryRecord record = new CategoryRecord();
-                long suffix_2 = j + 1;
-                record.setName("类目-" + suffix_1 + "-" + suffix_2);
-                record.setParentId(suffix_1);
+                int suffix = i + 1;
+                record.setName("类目-" + suffix);
+                record.setParentId(-1L);
                 record.setIsLeaf((byte) 0);
-                record.setSort((int)suffix_2);
+                record.setSort(suffix);
                 record.setIsDeleted((byte) 0);
                 record.setCreateUserId(1L);
                 record.setModifyUserId(1L);
                 datas.add(record);
-                if (datas.size() == 5000) {
-                    categoryDao.createCategorys(datas);
-                    datas = Lists.newArrayList();
-                }
             }
-        }
-        categoryDao.createCategorys(datas);
+            categoryDao.createCategorys(datas);
 
-        datas = Lists.newArrayList();
-        for (int i = 0; i < 100; i++) {
-            long suffix_1 = i + 1;
-            for (int j = 0; j < 100; j++) {
-                long suffix_2 = j + 1;
-                for (int k = 0; k < 1000; k++) {
+            datas = Lists.newArrayList();
+            for (int i = 0; i < 100; i++) {
+                long suffix_1 = i + 1;
+                for (int j = 0; j < 100; j++) {
                     CategoryRecord record = new CategoryRecord();
-                    long suffix_3 = k + 1;
-                    record.setName("类目-" + suffix_1 + "-" + suffix_2 + "-" + suffix_3);
-                    record.setParentId(suffix_1 * 100 + suffix_2);
+                    long suffix_2 = j + 1;
+                    record.setName("类目-" + suffix_1 + "-" + suffix_2);
+                    record.setParentId(suffix_1);
                     record.setIsLeaf((byte) 0);
-                    record.setSort((int) suffix_3);
+                    record.setSort((int) suffix_2);
                     record.setIsDeleted((byte) 0);
                     record.setCreateUserId(1L);
                     record.setModifyUserId(1L);
@@ -84,8 +65,33 @@ public class CategoryTest {
                     }
                 }
             }
+            categoryDao.createCategorys(datas);
+
+            datas = Lists.newArrayList();
+            for (int i = 0; i < 100; i++) {
+                long suffix_1 = i + 1;
+                for (int j = 0; j < 100; j++) {
+                    long suffix_2 = j + 1;
+                    for (int k = 0; k < 1000; k++) {
+                        CategoryRecord record = new CategoryRecord();
+                        long suffix_3 = k + 1;
+                        record.setName("类目-" + suffix_1 + "-" + suffix_2 + "-" + suffix_3);
+                        record.setParentId(suffix_1 * 100 + suffix_2);
+                        record.setIsLeaf((byte) 0);
+                        record.setSort((int) suffix_3);
+                        record.setIsDeleted((byte) 0);
+                        record.setCreateUserId(1L);
+                        record.setModifyUserId(1L);
+                        datas.add(record);
+                        if (datas.size() == 5000) {
+                            categoryDao.createCategorys(datas);
+                            datas = Lists.newArrayList();
+                        }
+                    }
+                }
+            }
+            categoryDao.createCategorys(datas);
         }
-        categoryDao.createCategorys(datas);
     }
 
     @Test

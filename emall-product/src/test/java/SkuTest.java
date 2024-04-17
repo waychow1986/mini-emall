@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,42 +21,46 @@ public class SkuTest {
     @Autowired
     private SkuDao skuDao;
 
+    @Value("${test.mock.data}")
+    private boolean mockData;
+
     @Test
     public void createSkus() {
-        List<SkuRecord> datas = Lists.newArrayList();
-        for (int i = 10101; i < 10010101; i++) {
-            SkuRecord record1 = new SkuRecord();
-            SkuRecord record2 = new SkuRecord();
+        if (mockData) {
+            List<SkuRecord> datas = Lists.newArrayList();
+            for (int i = 10101; i < 10010101; i++) {
+                SkuRecord record1 = new SkuRecord();
+                SkuRecord record2 = new SkuRecord();
 
-            long suffix = i - 10100;
+                long suffix = i - 10100;
 
-            record1.setSpuId(suffix);
-            record1.setCategoryId((long)i);
-            record1.setName("SKU-"+suffix+"-1");
-            record1.setPrice(10000L);
-            record1.setStock(100000L);
-            record1.setIsEnable((byte)1);
-            record1.setCreateUserId(1L);
-            record1.setModifyUserId(1L);
-            datas.add(record1);
+                record1.setSpuId(suffix);
+                record1.setCategoryId((long) i);
+                record1.setName("SKU-" + suffix + "-1");
+                record1.setPrice(10000L);
+                record1.setStock(100000L);
+                record1.setIsEnable((byte) 1);
+                record1.setCreateUserId(1L);
+                record1.setModifyUserId(1L);
+                datas.add(record1);
 
-            record2.setSpuId(suffix);
-            record2.setCategoryId((long)i);
-            record2.setName("SKU-"+suffix+"-2");
-            record2.setPrice(10000L);
-            record2.setStock(100000L);
-            record2.setIsEnable((byte)1);
-            record2.setCreateUserId(1L);
-            record2.setModifyUserId(1L);
-            datas.add(record2);
+                record2.setSpuId(suffix);
+                record2.setCategoryId((long) i);
+                record2.setName("SKU-" + suffix + "-2");
+                record2.setPrice(10000L);
+                record2.setStock(100000L);
+                record2.setIsEnable((byte) 1);
+                record2.setCreateUserId(1L);
+                record2.setModifyUserId(1L);
+                datas.add(record2);
 
-            if (datas.size() >= 5000) {
-                skuDao.createSkus(datas);
-                datas = Lists.newArrayList();
+                if (datas.size() >= 5000) {
+                    skuDao.createSkus(datas);
+                    datas = Lists.newArrayList();
+                }
             }
+            skuDao.createSkus(datas);
         }
-        skuDao.createSkus(datas);
-
     }
 
     private long getRandomCategoryId() {

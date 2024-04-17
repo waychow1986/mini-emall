@@ -28,4 +28,7 @@ spring:
 grpc:
   server:
     port: 9093
+test:
+  mock:
+    data: false
 

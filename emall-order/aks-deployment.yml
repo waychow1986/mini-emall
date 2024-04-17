@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: emall-order
+  namespace: emall
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: emall-order
+  template:
+    metadata:
+      labels:
+        app: emall-order
+    spec:
+      containers:
+        - name: emall-order
+          image: acrmall.azurecr.io/emall-order:v0.1
+          resources:
+            limits:
+              cpu: 2
+              memory: 1024Mi
+            requests:
+              cpu: 2
+              memory: 1024Mi
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler

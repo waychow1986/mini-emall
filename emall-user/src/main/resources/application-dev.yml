@@ -18,8 +18,6 @@ spring:
     connect-timeout: 30000
   zipkin:
     base-url: http://20.171.143.16:9411/
-    sender:
-      type: web #使用http的方式传输数据
     sleuth:
       sampler:
         probability: 1 # 将采样比例设置为 1.0，也就是全部都需要。默认是0.1也就是10%，一般情况下，10%就够用了
@@ -27,8 +25,9 @@ spring:
     allow-circular-references: true
 grpc:
   server:
-    port: 9093
+    port: 9091
 test:
   mock:
     data: false
+
 

@@ -1,8 +1,15 @@
 server:
   port: 8083
 spring:
+  profiles:
+    active: dev
   application:
     name: emall-user
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
   cloud:
     consul:
       host: 20.171.143.16
@@ -10,11 +17,27 @@ spring:
       discovery:
         metadata:
           gRPC_port: 9091
+        instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
         ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml
-grpc:
-  server:
-    port: 9091
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  cloud:
+    consul:
+      host: ${consul_client_ip}
+      port: 8500
+      discovery:
+        metadata:
+          gRPC_port: 9091
+        instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
+        prefer-ip-address: true
+#        ip-address: 4.242.239.19
+      config:
+        enabled: true
+        format: yaml
