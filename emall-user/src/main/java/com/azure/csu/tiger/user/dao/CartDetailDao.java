@@ -2,6 +2,7 @@ package com.azure.csu.tiger.user.dao;
 
 import com.azure.csu.tiger.user.jooq.tables.records.CartDetailRecord;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface CartDetailDao {
@@ -13,6 +14,12 @@ public interface CartDetailDao {
      * @param skuNum
      */
     Long createCartDetail(Long userid, Long skuId, Long skuNum);
+
+    /**
+     * 批量添加购物车
+     * @param records
+     */
+    void createCartDetails(Collection<CartDetailRecord> records);
 
     /**
      * 根据id删除明细

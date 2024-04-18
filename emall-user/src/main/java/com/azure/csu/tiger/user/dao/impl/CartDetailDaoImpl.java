@@ -3,10 +3,14 @@ package com.azure.csu.tiger.user.dao.impl;
 import com.azure.csu.tiger.user.dao.CartDetailDao;
 import com.azure.csu.tiger.user.jooq.Tables;
 import com.azure.csu.tiger.user.jooq.tables.records.CartDetailRecord;
+import com.azure.csu.tiger.user.jooq.tables.records.UserRecord;
 import org.jooq.DSLContext;
+import org.jooq.InsertValuesStep3;
+import org.jooq.InsertValuesStep7;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,6 +32,15 @@ public class CartDetailDaoImpl implements CartDetailDao {
         record.setSkuId(skuId);
         record.setSkuNum(skuNum);
         return context.insertInto(CART_DETAIL).set(record).returning(CART_DETAIL.ID).fetchOne().getId();
+    }
+
+    @Override
+    public void createCartDetails(Collection<CartDetailRecord> records) {
+        InsertValuesStep3<CartDetailRecord, Long, Long, Long> valuesStep3 = context.insertInto(CART_DETAIL)
+                .columns(CART_DETAIL.USER_ID, CART_DETAIL.SKU_ID, CART_DETAIL.SKU_NUM);
+        records.stream().forEach(r -> valuesStep3.values(r.getUserId(), r.getSkuId(), r.getSkuNum()));
+
+        valuesStep3.execute();
     }
 
     @Override

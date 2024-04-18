@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://20.205.26.219:6666/user_center
+    url: jdbc:mysql://10.2.0.9:6666/user_center
     username: root
     password: Emallmysql1@
 #    url: jdbc:mysql://emall.mysql.database.azure.com:3306/product_center
@@ -31,6 +31,6 @@ grpc:
     port: 9091
 test:
   mock:
-    data: true
+    data: false
 
 

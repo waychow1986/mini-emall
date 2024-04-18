@@ -12,14 +12,15 @@ spring:
       on-profile: dev
   cloud:
     consul:
-      host: 20.171.143.16
+#      host: 20.171.143.16
+      host: 127.0.0.1
       port: 8500
       discovery:
         metadata:
           gRPC_port: 9091
         instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
-        ip-address: 4.242.239.19
+#        ip-address: 207.46.139.72
       config:
         enabled: true
         format: yaml

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.azure.csu.tiger.grpc.lib";
+option java_outer_classname = "UserProto";
+
+// The Product service definition.
+service User {
+  // add cart
+  rpc addCart(AddCartRequest) returns (AddCartResponse) {
+  }
+  // list cart
+  rpc listCart(ListCartRequest) returns (ListCartResponse) {
+  }
+
+}
+
+message AddCartRequest {
+  int64 uid = 1;
+  int64 skuId = 2;
+}
+message AddCartResponse {
+  int32 code = 1;
+  bool success = 2;
+}
+
+message ListCartRequest {
+  int64 uid = 1;
+}
+message CartItem {
+  int64 uid = 1;
+  int64 skuId = 2;
+  int64 skuNum = 3;
+  string name = 4;
+  int64 price = 5;
+}
+message ListCartResponse {
+  int32 code = 1;
+  bool success = 2;
+  repeated CartItem datas = 3;
+}

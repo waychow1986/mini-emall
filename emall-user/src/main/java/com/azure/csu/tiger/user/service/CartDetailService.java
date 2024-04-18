@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CartDetailService {
 
-    boolean addCart(Long uid, Collection<Long> skuId);
+    boolean addCart(Long uid, Long skuId);
 
     List<CartDetailDTO> getCartDetail(Long uid);
 }
