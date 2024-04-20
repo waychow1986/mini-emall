@@ -22,6 +22,9 @@ public class CartController {
     @GrpcClient("emall-user")
     private UserGrpc.UserBlockingStub userStub;
 
+    @GrpcClient("emall-product")
+    private ProductGrpc.ProductBlockingStub productStub;
+
     @RequestMapping("/cart/add")
     public ResponseEntity<String> addCart(@RequestParam(required = true) Long uid, @RequestParam(required = true) Long skuId) throws ExecutionException, InterruptedException {
 
@@ -29,10 +32,18 @@ public class CartController {
             return ResponseEntity.badRequest().build();
         }
 
-        AddCartResponse addCartResponse = userStub.addCart(AddCartRequest.newBuilder().setUid(uid).setSkuId(skuId).build());
+        ListSkuInfoResponse listSkuInfoResponse = productStub.listSkuInfo(ListSkuRequest.newBuilder().addAllSkuId(Lists.newArrayList(skuId)).build());
+        if (!listSkuInfoResponse.getSuccess()) {
+            ResponseEntity.badRequest().build();
+        }
+        SkuInfo skuInfo = listSkuInfoResponse.getDatasList().get(0);
+        if (skuInfo != null && skuInfo.getStock() > 0) {
 
-        if (addCartResponse.getSuccess()) {
-            return ResponseEntity.ok().build();
+            AddCartResponse addCartResponse = userStub.addCart(AddCartRequest.newBuilder().setUid(uid).setSkuId(skuId).setSkuInfo(skuInfo).build());
+
+            if (addCartResponse.getSuccess()) {
+                return ResponseEntity.ok().build();
+            }
         }
 
         return ResponseEntity.badRequest().build();

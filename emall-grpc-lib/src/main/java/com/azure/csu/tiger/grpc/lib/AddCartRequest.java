@@ -58,6 +58,19 @@ private static final long serialVersionUID = 0L;
             skuId_ = input.readInt64();
             break;
           }
+          case 26: {
+            com.azure.csu.tiger.grpc.lib.SkuInfo.Builder subBuilder = null;
+            if (skuInfo_ != null) {
+              subBuilder = skuInfo_.toBuilder();
+            }
+            skuInfo_ = input.readMessage(com.azure.csu.tiger.grpc.lib.SkuInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(skuInfo_);
+              skuInfo_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -112,6 +125,32 @@ private static final long serialVersionUID = 0L;
     return skuId_;
   }
 
+  public static final int SKUINFO_FIELD_NUMBER = 3;
+  private com.azure.csu.tiger.grpc.lib.SkuInfo skuInfo_;
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   * @return Whether the skuInfo field is set.
+   */
+  @java.lang.Override
+  public boolean hasSkuInfo() {
+    return skuInfo_ != null;
+  }
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   * @return The skuInfo.
+   */
+  @java.lang.Override
+  public com.azure.csu.tiger.grpc.lib.SkuInfo getSkuInfo() {
+    return skuInfo_ == null ? com.azure.csu.tiger.grpc.lib.SkuInfo.getDefaultInstance() : skuInfo_;
+  }
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   */
+  @java.lang.Override
+  public com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder getSkuInfoOrBuilder() {
+    return getSkuInfo();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +171,9 @@ private static final long serialVersionUID = 0L;
     if (skuId_ != 0L) {
       output.writeInt64(2, skuId_);
     }
+    if (skuInfo_ != null) {
+      output.writeMessage(3, getSkuInfo());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -148,6 +190,10 @@ private static final long serialVersionUID = 0L;
     if (skuId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(2, skuId_);
+    }
+    if (skuInfo_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getSkuInfo());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,6 +214,11 @@ private static final long serialVersionUID = 0L;
         != other.getUid()) return false;
     if (getSkuId()
         != other.getSkuId()) return false;
+    if (hasSkuInfo() != other.hasSkuInfo()) return false;
+    if (hasSkuInfo()) {
+      if (!getSkuInfo()
+          .equals(other.getSkuInfo())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -185,6 +236,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + SKUID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getSkuId());
+    if (hasSkuInfo()) {
+      hash = (37 * hash) + SKUINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getSkuInfo().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -322,6 +377,12 @@ private static final long serialVersionUID = 0L;
 
       skuId_ = 0L;
 
+      if (skuInfoBuilder_ == null) {
+        skuInfo_ = null;
+      } else {
+        skuInfo_ = null;
+        skuInfoBuilder_ = null;
+      }
       return this;
     }
 
@@ -350,6 +411,11 @@ private static final long serialVersionUID = 0L;
       com.azure.csu.tiger.grpc.lib.AddCartRequest result = new com.azure.csu.tiger.grpc.lib.AddCartRequest(this);
       result.uid_ = uid_;
       result.skuId_ = skuId_;
+      if (skuInfoBuilder_ == null) {
+        result.skuInfo_ = skuInfo_;
+      } else {
+        result.skuInfo_ = skuInfoBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -403,6 +469,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getSkuId() != 0L) {
         setSkuId(other.getSkuId());
+      }
+      if (other.hasSkuInfo()) {
+        mergeSkuInfo(other.getSkuInfo());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -493,6 +562,125 @@ private static final long serialVersionUID = 0L;
       skuId_ = 0L;
       onChanged();
       return this;
+    }
+
+    private com.azure.csu.tiger.grpc.lib.SkuInfo skuInfo_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.azure.csu.tiger.grpc.lib.SkuInfo, com.azure.csu.tiger.grpc.lib.SkuInfo.Builder, com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder> skuInfoBuilder_;
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     * @return Whether the skuInfo field is set.
+     */
+    public boolean hasSkuInfo() {
+      return skuInfoBuilder_ != null || skuInfo_ != null;
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     * @return The skuInfo.
+     */
+    public com.azure.csu.tiger.grpc.lib.SkuInfo getSkuInfo() {
+      if (skuInfoBuilder_ == null) {
+        return skuInfo_ == null ? com.azure.csu.tiger.grpc.lib.SkuInfo.getDefaultInstance() : skuInfo_;
+      } else {
+        return skuInfoBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public Builder setSkuInfo(com.azure.csu.tiger.grpc.lib.SkuInfo value) {
+      if (skuInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        skuInfo_ = value;
+        onChanged();
+      } else {
+        skuInfoBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public Builder setSkuInfo(
+        com.azure.csu.tiger.grpc.lib.SkuInfo.Builder builderForValue) {
+      if (skuInfoBuilder_ == null) {
+        skuInfo_ = builderForValue.build();
+        onChanged();
+      } else {
+        skuInfoBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public Builder mergeSkuInfo(com.azure.csu.tiger.grpc.lib.SkuInfo value) {
+      if (skuInfoBuilder_ == null) {
+        if (skuInfo_ != null) {
+          skuInfo_ =
+            com.azure.csu.tiger.grpc.lib.SkuInfo.newBuilder(skuInfo_).mergeFrom(value).buildPartial();
+        } else {
+          skuInfo_ = value;
+        }
+        onChanged();
+      } else {
+        skuInfoBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public Builder clearSkuInfo() {
+      if (skuInfoBuilder_ == null) {
+        skuInfo_ = null;
+        onChanged();
+      } else {
+        skuInfo_ = null;
+        skuInfoBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public com.azure.csu.tiger.grpc.lib.SkuInfo.Builder getSkuInfoBuilder() {
+      
+      onChanged();
+      return getSkuInfoFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    public com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder getSkuInfoOrBuilder() {
+      if (skuInfoBuilder_ != null) {
+        return skuInfoBuilder_.getMessageOrBuilder();
+      } else {
+        return skuInfo_ == null ?
+            com.azure.csu.tiger.grpc.lib.SkuInfo.getDefaultInstance() : skuInfo_;
+      }
+    }
+    /**
+     * <code>.SkuInfo skuInfo = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.azure.csu.tiger.grpc.lib.SkuInfo, com.azure.csu.tiger.grpc.lib.SkuInfo.Builder, com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder> 
+        getSkuInfoFieldBuilder() {
+      if (skuInfoBuilder_ == null) {
+        skuInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.azure.csu.tiger.grpc.lib.SkuInfo, com.azure.csu.tiger.grpc.lib.SkuInfo.Builder, com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder>(
+                getSkuInfo(),
+                getParentForChildren(),
+                isClean());
+        skuInfo_ = null;
+      }
+      return skuInfoBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

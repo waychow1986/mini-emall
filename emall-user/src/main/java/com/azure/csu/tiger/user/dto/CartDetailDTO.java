@@ -1,6 +1,6 @@
 package com.azure.csu.tiger.user.dto;
 
-import com.azure.csu.tiger.user.cache.bo.CartItem;
+import com.azure.csu.tiger.user.cache.bo.CartItemBo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,12 +24,12 @@ public class CartDetailDTO {
      */
     private String name;
 
-    public static CartDetailDTO fromCacheCart(CartItem item, Long uid) {
+    public static CartDetailDTO fromCacheCart(CartItemBo item, Long uid) {
         CartDetailDTO dto = new CartDetailDTO();
         dto.setUserId(uid);
         dto.setSkuId(item.getSkuId());
         dto.setSkuNum(item.getSkuNum());
-        dto.setName(item.getName());
+        dto.setName(item.getSkuName());
         dto.setPrice(item.getPrice());
         return dto;
     }

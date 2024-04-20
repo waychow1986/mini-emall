@@ -4,15 +4,19 @@ import com.azure.csu.tiger.product.jooq.tables.records.CategoryRecord;
 import com.azure.csu.tiger.product.service.CategoryService;
 import com.azure.csu.tiger.product.service.impl.CategoryServiceImpl;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmallProductApplication.class)
@@ -24,6 +28,9 @@ public class CategoryTest {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
     @Value("${test.mock.data}")
     private boolean mockData;
 
@@ -34,7 +41,9 @@ public class CategoryTest {
             for (int i = 0; i < 100; i++) {
                 CategoryRecord record = new CategoryRecord();
                 int suffix = i + 1;
-                record.setName("类目-" + suffix);
+                long id = suffix;
+                long parentId = -1L;
+                record.setName("类目-" + id+"-"+parentId);
                 record.setParentId(-1L);
                 record.setIsLeaf((byte) 0);
                 record.setSort(suffix);
@@ -51,8 +60,10 @@ public class CategoryTest {
                 for (int j = 0; j < 100; j++) {
                     CategoryRecord record = new CategoryRecord();
                     long suffix_2 = j + 1;
-                    record.setName("类目-" + suffix_1 + "-" + suffix_2);
-                    record.setParentId(suffix_1);
+                    long id = 100+i*100+suffix_2;
+                    long parentId = suffix_1;
+                    record.setName("类目-" + id+"-"+parentId);
+                    record.setParentId(parentId);
                     record.setIsLeaf((byte) 0);
                     record.setSort((int) suffix_2);
                     record.setIsDeleted((byte) 0);
@@ -75,9 +86,11 @@ public class CategoryTest {
                     for (int k = 0; k < 1000; k++) {
                         CategoryRecord record = new CategoryRecord();
                         long suffix_3 = k + 1;
-                        record.setName("类目-" + suffix_1 + "-" + suffix_2 + "-" + suffix_3);
-                        record.setParentId(suffix_1 * 100 + suffix_2);
-                        record.setIsLeaf((byte) 0);
+                        long id = 10100+i*100*1000+j*1000+suffix_3;
+                        long parentId = 100+i*100+suffix_2;
+                        record.setName("类目-" + id+"-"+parentId);
+                        record.setParentId(parentId);
+                        record.setIsLeaf((byte) 1);
                         record.setSort((int) suffix_3);
                         record.setIsDeleted((byte) 0);
                         record.setCreateUserId(1L);
@@ -91,6 +104,64 @@ public class CategoryTest {
                 }
             }
             categoryDao.createCategorys(datas);
+        }
+    }
+
+    @Test
+    public void flushToRedis() {
+        if (mockData) {
+            Map<String, String> datas = Maps.newHashMap();
+            for (int i = 0; i < 100; i++) {
+                int suffix = i + 1;
+                long id = suffix;
+                long parentId = -1L;
+                JsonObject o = new JsonObject();
+                o.addProperty("name", "类目-" + id+"-"+parentId);
+                o.addProperty("parentId", parentId);
+                datas.put("PRODUCT:CATEGORY:"+id, o.toString());
+            }
+            redisTemplate.opsForValue().multiSet(datas);
+            datas = Maps.newHashMap();
+            for (int i = 0; i < 100; i++) {
+                long suffix_1 = i + 1;
+                for (int j = 0; j < 100; j++) {
+                    CategoryRecord record = new CategoryRecord();
+                    long suffix_2 = j + 1;
+                    long id = 100+i*100+suffix_2;
+                    long parentId = suffix_1;
+                    JsonObject o = new JsonObject();
+                    o.addProperty("name", "类目-" + id+"-"+parentId);
+                    o.addProperty("parentId", parentId);
+                    datas.put("PRODUCT:CATEGORY:"+id, o.toString());
+                    if (datas.size() >= 1000) {
+                        redisTemplate.opsForValue().multiSet(datas);
+                        datas = Maps.newHashMap();
+                    }
+                }
+            }
+            redisTemplate.opsForValue().multiSet(datas);
+            datas = Maps.newHashMap();
+            for (int i = 0; i < 100; i++) {
+                long suffix_1 = i + 1;
+                for (int j = 0; j < 100; j++) {
+                    long suffix_2 = j + 1;
+                    for (int k = 0; k < 1000; k++) {
+                        CategoryRecord record = new CategoryRecord();
+                        long suffix_3 = k + 1;
+                        long id = 10100+i*100*1000+j*1000+suffix_3;
+                        long parentId = 100+i*100+suffix_2;
+                        JsonObject o = new JsonObject();
+                        o.addProperty("name", "类目-" + id+"-"+parentId);
+                        o.addProperty("parentId", parentId);
+                        datas.put("PRODUCT:CATEGORY:"+id, o.toString());
+                        if (datas.size() >= 1000) {
+                            redisTemplate.opsForValue().multiSet(datas);
+                            datas = Maps.newHashMap();
+                        }
+                    }
+                }
+            }
+            redisTemplate.opsForValue().multiSet(datas);
         }
     }
 

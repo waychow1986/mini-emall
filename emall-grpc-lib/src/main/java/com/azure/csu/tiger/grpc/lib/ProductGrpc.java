@@ -61,6 +61,37 @@ public final class ProductGrpc {
     return getListCategoryMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListSkuRequest,
+      com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> getListSkuInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "listSkuInfo",
+      requestType = com.azure.csu.tiger.grpc.lib.ListSkuRequest.class,
+      responseType = com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListSkuRequest,
+      com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> getListSkuInfoMethod() {
+    io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListSkuRequest, com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> getListSkuInfoMethod;
+    if ((getListSkuInfoMethod = ProductGrpc.getListSkuInfoMethod) == null) {
+      synchronized (ProductGrpc.class) {
+        if ((getListSkuInfoMethod = ProductGrpc.getListSkuInfoMethod) == null) {
+          ProductGrpc.getListSkuInfoMethod = getListSkuInfoMethod =
+              io.grpc.MethodDescriptor.<com.azure.csu.tiger.grpc.lib.ListSkuRequest, com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "listSkuInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.ListSkuRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProductMethodDescriptorSupplier("listSkuInfo"))
+              .build();
+        }
+      }
+    }
+    return getListSkuInfoMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -122,6 +153,16 @@ public final class ProductGrpc {
       asyncUnimplementedUnaryCall(getListCategoryMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * list sku info
+     * </pre>
+     */
+    public void listSkuInfo(com.azure.csu.tiger.grpc.lib.ListSkuRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getListSkuInfoMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -131,6 +172,13 @@ public final class ProductGrpc {
                 com.azure.csu.tiger.grpc.lib.FindCategoryRequest,
                 com.azure.csu.tiger.grpc.lib.CategoryListResponse>(
                   this, METHODID_LIST_CATEGORY)))
+          .addMethod(
+            getListSkuInfoMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.azure.csu.tiger.grpc.lib.ListSkuRequest,
+                com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse>(
+                  this, METHODID_LIST_SKU_INFO)))
           .build();
     }
   }
@@ -162,6 +210,17 @@ public final class ProductGrpc {
       asyncUnaryCall(
           getChannel().newCall(getListCategoryMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * list sku info
+     * </pre>
+     */
+    public void listSkuInfo(com.azure.csu.tiger.grpc.lib.ListSkuRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getListSkuInfoMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -189,6 +248,16 @@ public final class ProductGrpc {
     public com.azure.csu.tiger.grpc.lib.CategoryListResponse listCategory(com.azure.csu.tiger.grpc.lib.FindCategoryRequest request) {
       return blockingUnaryCall(
           getChannel(), getListCategoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * list sku info
+     * </pre>
+     */
+    public com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse listSkuInfo(com.azure.csu.tiger.grpc.lib.ListSkuRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getListSkuInfoMethod(), getCallOptions(), request);
     }
   }
 
@@ -219,9 +288,21 @@ public final class ProductGrpc {
       return futureUnaryCall(
           getChannel().newCall(getListCategoryMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * list sku info
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse> listSkuInfo(
+        com.azure.csu.tiger.grpc.lib.ListSkuRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getListSkuInfoMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_LIST_CATEGORY = 0;
+  private static final int METHODID_LIST_SKU_INFO = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -243,6 +324,10 @@ public final class ProductGrpc {
         case METHODID_LIST_CATEGORY:
           serviceImpl.listCategory((com.azure.csu.tiger.grpc.lib.FindCategoryRequest) request,
               (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.CategoryListResponse>) responseObserver);
+          break;
+        case METHODID_LIST_SKU_INFO:
+          serviceImpl.listSkuInfo((com.azure.csu.tiger.grpc.lib.ListSkuRequest) request,
+              (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -306,6 +391,7 @@ public final class ProductGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ProductFileDescriptorSupplier())
               .addMethod(getListCategoryMethod())
+              .addMethod(getListSkuInfoMethod())
               .build();
         }
       }

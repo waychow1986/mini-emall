@@ -29,6 +29,16 @@ public final class ProductProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CategoryListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListSkuRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ListSkuRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListSkuInfoResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ListSkuInfoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -38,19 +48,24 @@ public final class ProductProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rproduct.proto\"5\n\023FindCategoryRequest\022\014" +
-      "\n\004name\030\001 \001(\t\022\020\n\010parentId\030\002 \001(\003\"T\n\010Catego" +
-      "ry\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\020\n\010parentId" +
-      "\030\003 \001(\003\022\016\n\006isLeaf\030\004 \001(\010\022\014\n\004sort\030\005 \001(\005\"0\n\024" +
-      "CategoryListResponse\022\030\n\005datas\030\001 \003(\0132\t.Ca" +
-      "tegory2H\n\007Product\022=\n\014listCategory\022\024.Find" +
-      "CategoryRequest\032\025.CategoryListResponse\"\000" +
-      "B.\n\034com.azure.csu.tiger.grpc.libB\014Produc" +
-      "tProtoP\001b\006proto3"
+      "\n\rproduct.proto\032\nbase.proto\"5\n\023FindCateg" +
+      "oryRequest\022\014\n\004name\030\001 \001(\t\022\020\n\010parentId\030\002 \001" +
+      "(\003\"T\n\010Category\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t" +
+      "\022\020\n\010parentId\030\003 \001(\003\022\016\n\006isLeaf\030\004 \001(\010\022\014\n\004so" +
+      "rt\030\005 \001(\005\"0\n\024CategoryListResponse\022\030\n\005data" +
+      "s\030\001 \003(\0132\t.Category\"\037\n\016ListSkuRequest\022\r\n\005" +
+      "skuId\030\001 \003(\003\"M\n\023ListSkuInfoResponse\022\014\n\004co" +
+      "de\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\022\027\n\005datas\030\003 \003(\013" +
+      "2\010.SkuInfo2\200\001\n\007Product\022=\n\014listCategory\022\024" +
+      ".FindCategoryRequest\032\025.CategoryListRespo" +
+      "nse\"\000\0226\n\013listSkuInfo\022\017.ListSkuRequest\032\024." +
+      "ListSkuInfoResponse\"\000B.\n\034com.azure.csu.t" +
+      "iger.grpc.libB\014ProductProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor(),
         });
     internal_static_FindCategoryRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -70,6 +85,19 @@ public final class ProductProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CategoryListResponse_descriptor,
         new java.lang.String[] { "Datas", });
+    internal_static_ListSkuRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ListSkuRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ListSkuRequest_descriptor,
+        new java.lang.String[] { "SkuId", });
+    internal_static_ListSkuInfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ListSkuInfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ListSkuInfoResponse_descriptor,
+        new java.lang.String[] { "Code", "Success", "Datas", });
+    com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -5,6 +5,10 @@ spring:
     active: dev
   application:
     name: emall-order
+management:
+  health:
+    redis:
+      enabled: false
 ---
 spring:
   config:

@@ -8,9 +8,9 @@ spring:
 #    password: Q1w2e3r4t5y6
   redis:
     database: 0
-    host: sheintest.redis.cache.windows.net
-    port: 6379
-    password: DFALHzmo7mAkMYxTCrrOqwuepRKLYIEhIAzCaAzmkg4=
+    host: 10.1.0.70
+    port: 7617
+    password: 4L62C7zQZg
     jedis:
       pool:
         enable: true
@@ -33,5 +33,5 @@ grpc:
     port: 9093
 test:
   mock:
-    data: true
+    data: false
 

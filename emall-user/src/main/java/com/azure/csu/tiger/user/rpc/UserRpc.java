@@ -2,6 +2,7 @@ package com.azure.csu.tiger.user.rpc;
 
 import com.azure.csu.tiger.common.utils.Constant;
 import com.azure.csu.tiger.grpc.lib.*;
+import com.azure.csu.tiger.user.cache.bo.SkuItemBo;
 import com.azure.csu.tiger.user.dto.CartDetailDTO;
 import com.azure.csu.tiger.user.service.CartDetailService;
 import io.grpc.stub.StreamObserver;
@@ -21,8 +22,9 @@ public class UserRpc extends UserGrpc.UserImplBase {
     public void addCart(AddCartRequest request, StreamObserver<AddCartResponse> responseObserver) {
         Long uid = request.getUid();
         Long skuId = request.getSkuId();
+        SkuInfo skuInfo = request.getSkuInfo();
 
-        cartDetailService.addCart(uid, skuId);
+        cartDetailService.addCart(uid, skuId, SkuItemBo.fromGrpcSkuInfo(skuInfo));
 
         AddCartResponse response = AddCartResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).build();
 

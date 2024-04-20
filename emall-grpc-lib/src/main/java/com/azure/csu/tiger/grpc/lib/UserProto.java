@@ -48,29 +48,31 @@ public final class UserProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nuser.proto\",\n\016AddCartRequest\022\013\n\003uid\030\001 " +
-      "\001(\003\022\r\n\005skuId\030\002 \001(\003\"0\n\017AddCartResponse\022\014\n" +
-      "\004code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\"\036\n\017ListCart" +
-      "Request\022\013\n\003uid\030\001 \001(\003\"S\n\010CartItem\022\013\n\003uid\030" +
-      "\001 \001(\003\022\r\n\005skuId\030\002 \001(\003\022\016\n\006skuNum\030\003 \001(\003\022\014\n\004" +
-      "name\030\004 \001(\t\022\r\n\005price\030\005 \001(\003\"K\n\020ListCartRes" +
-      "ponse\022\014\n\004code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\022\030\n\005" +
-      "datas\030\003 \003(\0132\t.CartItem2i\n\004User\022.\n\007addCar" +
-      "t\022\017.AddCartRequest\032\020.AddCartResponse\"\000\0221" +
-      "\n\010listCart\022\020.ListCartRequest\032\021.ListCartR" +
-      "esponse\"\000B+\n\034com.azure.csu.tiger.grpc.li" +
-      "bB\tUserProtoP\001b\006proto3"
+      "\n\nuser.proto\032\nbase.proto\"G\n\016AddCartReque" +
+      "st\022\013\n\003uid\030\001 \001(\003\022\r\n\005skuId\030\002 \001(\003\022\031\n\007skuInf" +
+      "o\030\003 \001(\0132\010.SkuInfo\"0\n\017AddCartResponse\022\014\n\004" +
+      "code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\"\036\n\017ListCartR" +
+      "equest\022\013\n\003uid\030\001 \001(\003\"S\n\010CartItem\022\013\n\003uid\030\001" +
+      " \001(\003\022\r\n\005skuId\030\002 \001(\003\022\016\n\006skuNum\030\003 \001(\003\022\014\n\004n" +
+      "ame\030\004 \001(\t\022\r\n\005price\030\005 \001(\003\"K\n\020ListCartResp" +
+      "onse\022\014\n\004code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\022\030\n\005d" +
+      "atas\030\003 \003(\0132\t.CartItem2i\n\004User\022.\n\007addCart" +
+      "\022\017.AddCartRequest\032\020.AddCartResponse\"\000\0221\n" +
+      "\010listCart\022\020.ListCartRequest\032\021.ListCartRe" +
+      "sponse\"\000B+\n\034com.azure.csu.tiger.grpc.lib" +
+      "B\tUserProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor(),
         });
     internal_static_AddCartRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_AddCartRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AddCartRequest_descriptor,
-        new java.lang.String[] { "Uid", "SkuId", });
+        new java.lang.String[] { "Uid", "SkuId", "SkuInfo", });
     internal_static_AddCartResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_AddCartResponse_fieldAccessorTable = new
@@ -95,6 +97,7 @@ public final class UserProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListCartResponse_descriptor,
         new java.lang.String[] { "Code", "Success", "Datas", });
+    com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

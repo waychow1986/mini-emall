@@ -3,11 +3,15 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.azure.csu.tiger.grpc.lib";
 option java_outer_classname = "ProductProto";
+import "base.proto";
 
 // The Product service definition.
 service Product {
   // list Category
   rpc listCategory (FindCategoryRequest) returns (CategoryListResponse) {
+  }
+  // list sku info
+  rpc listSkuInfo (ListSkuRequest) returns (ListSkuInfoResponse) {
   }
 }
 
@@ -26,4 +30,13 @@ message Category {
 
 message CategoryListResponse {
   repeated Category datas = 1;
+}
+
+message ListSkuRequest {
+  repeated int64 skuId = 1;
+}
+message ListSkuInfoResponse {
+  int32 code = 1;
+  bool success = 2;
+  repeated SkuInfo datas = 3;
 }

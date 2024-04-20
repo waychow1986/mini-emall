@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CartItem {
+public class CartItemBo {
 
     /**
      * 商品id
@@ -25,6 +25,6 @@ public class CartItem {
     /**
      * 商品名称
      */
-    private String name;
+    private String skuName;
 
 }

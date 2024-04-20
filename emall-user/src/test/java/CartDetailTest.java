@@ -24,7 +24,7 @@ public class CartDetailTest {
     @Test
     public void addCart() {
         Long uid = 2L;
-        cartDetailService.addCart(uid, 2L);
+        cartDetailService.addCart(uid, 2L, null);
     }
 
     @Test

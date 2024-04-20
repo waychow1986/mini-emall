@@ -4,14 +4,19 @@ import com.azure.csu.tiger.product.dao.SpuDao;
 import com.azure.csu.tiger.product.jooq.tables.records.AttributeRecord;
 import com.azure.csu.tiger.product.jooq.tables.records.SpuRecord;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +25,9 @@ public class SpuTest {
 
     @Autowired
     private SpuDao spuDao;
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
     @Value("${test.mock.data}")
     private boolean mockData;
@@ -45,6 +53,43 @@ public class SpuTest {
             }
             spuDao.createSpus(datas);
         }
+    }
+
+    @Test
+    public void flushToRedis() {
+
+        if(mockData) {
+            Map<String, String> datas = Maps.newHashMap();
+            long skuId = 0;
+            for (int i = 10101; i < 10010101; i++) {
+                long suffix = i - 10100;
+                JsonObject o1 = new JsonObject();
+
+                o1.addProperty("spuId", suffix);
+                o1.addProperty("name", "SPU-" + suffix);
+                o1.addProperty("categoryId", i);
+                o1.addProperty("description", "随机产品: " + o1.get("name") + ", 归属类目: " + o1.get("categoryId"));
+
+                JsonArray a1 = new JsonArray();
+                a1.add(++skuId);
+                a1.add(++skuId);
+                o1.add("skuIds", a1);
+
+                JsonObject ao = new JsonObject();
+                ao.addProperty("属性-generic-1", "基础属性值-1-" + suffix);
+                ao.addProperty("属性-generic-2", "基础属性值-2-" + suffix);
+                o1.add("attr", ao);
+
+                datas.put("PRODUCT:SPU:" + suffix, o1.toString());
+
+                if (datas.size() >= 1000) {
+                    redisTemplate.opsForValue().multiSet(datas);
+                    datas = Maps.newHashMap();
+                }
+            }
+            redisTemplate.opsForValue().multiSet(datas);
+        }
+
     }
 
     private long getRandomCategoryId() {

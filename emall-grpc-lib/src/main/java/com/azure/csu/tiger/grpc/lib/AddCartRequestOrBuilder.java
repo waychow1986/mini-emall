@@ -18,4 +18,19 @@ public interface AddCartRequestOrBuilder extends
    * @return The skuId.
    */
   long getSkuId();
+
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   * @return Whether the skuInfo field is set.
+   */
+  boolean hasSkuInfo();
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   * @return The skuInfo.
+   */
+  com.azure.csu.tiger.grpc.lib.SkuInfo getSkuInfo();
+  /**
+   * <code>.SkuInfo skuInfo = 3;</code>
+   */
+  com.azure.csu.tiger.grpc.lib.SkuInfoOrBuilder getSkuInfoOrBuilder();
 }
