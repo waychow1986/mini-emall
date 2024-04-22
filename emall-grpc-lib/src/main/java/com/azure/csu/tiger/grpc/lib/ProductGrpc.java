@@ -123,6 +123,37 @@ public final class ProductGrpc {
     return getSearchSkuMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest,
+      com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> getGetSkuDetailInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getSkuDetailInfo",
+      requestType = com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest.class,
+      responseType = com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest,
+      com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> getGetSkuDetailInfoMethod() {
+    io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest, com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> getGetSkuDetailInfoMethod;
+    if ((getGetSkuDetailInfoMethod = ProductGrpc.getGetSkuDetailInfoMethod) == null) {
+      synchronized (ProductGrpc.class) {
+        if ((getGetSkuDetailInfoMethod = ProductGrpc.getGetSkuDetailInfoMethod) == null) {
+          ProductGrpc.getGetSkuDetailInfoMethod = getGetSkuDetailInfoMethod =
+              io.grpc.MethodDescriptor.<com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest, com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getSkuDetailInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProductMethodDescriptorSupplier("getSkuDetailInfo"))
+              .build();
+        }
+      }
+    }
+    return getGetSkuDetailInfoMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -204,6 +235,16 @@ public final class ProductGrpc {
       asyncUnimplementedUnaryCall(getSearchSkuMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * get sku detail
+     * </pre>
+     */
+    public void getSkuDetailInfo(com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetSkuDetailInfoMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -227,6 +268,13 @@ public final class ProductGrpc {
                 com.azure.csu.tiger.grpc.lib.ListSkuRequest2,
                 com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse>(
                   this, METHODID_SEARCH_SKU)))
+          .addMethod(
+            getGetSkuDetailInfoMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest,
+                com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse>(
+                  this, METHODID_GET_SKU_DETAIL_INFO)))
           .build();
     }
   }
@@ -280,6 +328,17 @@ public final class ProductGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSearchSkuMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * get sku detail
+     * </pre>
+     */
+    public void getSkuDetailInfo(com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetSkuDetailInfoMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -327,6 +386,16 @@ public final class ProductGrpc {
     public com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse searchSku(com.azure.csu.tiger.grpc.lib.ListSkuRequest2 request) {
       return blockingUnaryCall(
           getChannel(), getSearchSkuMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * get sku detail
+     * </pre>
+     */
+    public com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse getSkuDetailInfo(com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetSkuDetailInfoMethod(), getCallOptions(), request);
     }
   }
 
@@ -379,11 +448,23 @@ public final class ProductGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSearchSkuMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * get sku detail
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse> getSkuDetailInfo(
+        com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetSkuDetailInfoMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_LIST_CATEGORY = 0;
   private static final int METHODID_LIST_SKU_INFO = 1;
   private static final int METHODID_SEARCH_SKU = 2;
+  private static final int METHODID_GET_SKU_DETAIL_INFO = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -413,6 +494,10 @@ public final class ProductGrpc {
         case METHODID_SEARCH_SKU:
           serviceImpl.searchSku((com.azure.csu.tiger.grpc.lib.ListSkuRequest2) request,
               (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse>) responseObserver);
+          break;
+        case METHODID_GET_SKU_DETAIL_INFO:
+          serviceImpl.getSkuDetailInfo((com.azure.csu.tiger.grpc.lib.GetSkuDetailRequest) request,
+              (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetSkuDetailResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -478,6 +563,7 @@ public final class ProductGrpc {
               .addMethod(getListCategoryMethod())
               .addMethod(getListSkuInfoMethod())
               .addMethod(getSearchSkuMethod())
+              .addMethod(getGetSkuDetailInfoMethod())
               .build();
         }
       }

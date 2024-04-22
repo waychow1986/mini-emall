@@ -1,13 +1,12 @@
 package com.azure.csu.tiger.web.vo;
 
-import com.azure.csu.tiger.grpc.lib.CartItem;
 import com.azure.csu.tiger.grpc.lib.SkuInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ProductListVO {
+public class SkuListVO {
 
     /**
      * sku id
@@ -29,8 +28,8 @@ public class ProductListVO {
      */
     private Long stock;
 
-    public static ProductListVO from(SkuInfo item) {
-        ProductListVO dto = new ProductListVO();
+    public static SkuListVO from(SkuInfo item) {
+        SkuListVO dto = new SkuListVO();
         dto.setSkuId(item.getSkuId());
         dto.setSkuName(item.getName());
         dto.setPrice(item.getPrice());

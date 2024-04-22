@@ -15,6 +15,11 @@ public final class BaseProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CartItem_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CartItem_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SkuInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -24,6 +29,16 @@ public final class BaseProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SkuInfo_AttrEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SkuDetailInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SkuDetailInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SkuDetailInfo_AttrEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SkuDetailInfo_AttrEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,20 +48,36 @@ public final class BaseProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nbase.proto\"\266\001\n\007SkuInfo\022\r\n\005skuId\030\001 \001(\003\022" +
-      "\r\n\005spuId\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\022\n\ncategory" +
-      "Id\030\004 \001(\003\022\r\n\005price\030\005 \001(\003\022\r\n\005stock\030\006 \001(\003\022 " +
-      "\n\004attr\030\007 \003(\0132\022.SkuInfo.AttrEntry\032+\n\tAttr" +
-      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001B+\n" +
-      "\034com.azure.csu.tiger.grpc.libB\tBaseProto" +
-      "P\001b\006proto3"
+      "\n\nbase.proto\"S\n\010CartItem\022\013\n\003uid\030\001 \001(\003\022\r\n" +
+      "\005skuId\030\002 \001(\003\022\016\n\006skuNum\030\003 \001(\003\022\014\n\004name\030\004 \001" +
+      "(\t\022\r\n\005price\030\005 \001(\003\"\266\001\n\007SkuInfo\022\r\n\005skuId\030\001" +
+      " \001(\003\022\r\n\005spuId\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\022\n\ncat" +
+      "egoryId\030\004 \001(\003\022\r\n\005price\030\005 \001(\003\022\r\n\005stock\030\006 " +
+      "\001(\003\022 \n\004attr\030\007 \003(\0132\022.SkuInfo.AttrEntry\032+\n" +
+      "\tAttrEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\002" +
+      "8\001\"\314\002\n\rSkuDetailInfo\022\r\n\005skuId\030\001 \001(\003\022\017\n\007s" +
+      "kuName\030\002 \001(\t\022\017\n\007spuName\030\003 \001(\t\022\023\n\013categor" +
+      "yId1\030\004 \001(\003\022\023\n\013categoryId2\030\005 \001(\003\022\023\n\013categ" +
+      "oryId3\030\006 \001(\003\022\025\n\rcategoryName1\030\007 \001(\t\022\025\n\rc" +
+      "ategoryName2\030\010 \001(\t\022\025\n\rcategoryName3\030\t \001(" +
+      "\t\022\023\n\013description\030\n \001(\t\022\r\n\005price\030\013 \001(\003\022\r\n" +
+      "\005stock\030\014 \001(\003\022&\n\004attr\030\r \003(\0132\030.SkuDetailIn" +
+      "fo.AttrEntry\032+\n\tAttrEntry\022\013\n\003key\030\001 \001(\t\022\r" +
+      "\n\005value\030\002 \001(\t:\0028\001B+\n\034com.azure.csu.tiger" +
+      ".grpc.libB\tBaseProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_SkuInfo_descriptor =
+    internal_static_CartItem_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_CartItem_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CartItem_descriptor,
+        new java.lang.String[] { "Uid", "SkuId", "SkuNum", "Name", "Price", });
+    internal_static_SkuInfo_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_SkuInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SkuInfo_descriptor,
@@ -56,6 +87,18 @@ public final class BaseProto {
     internal_static_SkuInfo_AttrEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SkuInfo_AttrEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_SkuDetailInfo_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_SkuDetailInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SkuDetailInfo_descriptor,
+        new java.lang.String[] { "SkuId", "SkuName", "SpuName", "CategoryId1", "CategoryId2", "CategoryId3", "CategoryName1", "CategoryName2", "CategoryName3", "Description", "Price", "Stock", "Attr", });
+    internal_static_SkuDetailInfo_AttrEntry_descriptor =
+      internal_static_SkuDetailInfo_descriptor.getNestedTypes().get(0);
+    internal_static_SkuDetailInfo_AttrEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SkuDetailInfo_AttrEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

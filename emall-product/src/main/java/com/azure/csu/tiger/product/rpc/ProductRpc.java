@@ -5,6 +5,7 @@ import com.azure.csu.tiger.grpc.lib.*;
 import com.azure.csu.tiger.product.cache.bo.SkuItemBo;
 import com.azure.csu.tiger.product.dao.SkuDao;
 import com.azure.csu.tiger.product.dto.CategoryDTO;
+import com.azure.csu.tiger.product.dto.SkuDetailDTO;
 import com.azure.csu.tiger.product.jooq.tables.records.SkuRecord;
 import com.azure.csu.tiger.product.service.CategoryService;
 import com.azure.csu.tiger.product.service.SkuService;
@@ -80,6 +81,16 @@ public class ProductRpc extends ProductGrpc.ProductImplBase {
         }).collect(Collectors.toList());
 
         ListSkuInfoResponse response = ListSkuInfoResponse.newBuilder().addAllDatas(skuInfos).setSuccess(true).setCode(Constant.SUCCESS).build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getSkuDetailInfo(GetSkuDetailRequest request, StreamObserver<GetSkuDetailResponse> responseObserver) {
+        SkuDetailDTO skuDetailDTO = skuService.getSkuDetailInfo(request.getSkuId());
+
+        GetSkuDetailResponse response = GetSkuDetailResponse.newBuilder().setData(skuDetailDTO.toGrpcSkuDetailInfo()).setSuccess(true).setCode(Constant.SUCCESS).build();
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();

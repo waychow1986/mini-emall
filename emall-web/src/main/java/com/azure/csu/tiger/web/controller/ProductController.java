@@ -1,9 +1,8 @@
 package com.azure.csu.tiger.web.controller;
 
-import com.azure.csu.tiger.grpc.lib.ListSkuInfoResponse;
-import com.azure.csu.tiger.grpc.lib.ListSkuRequest2;
-import com.azure.csu.tiger.grpc.lib.ProductGrpc;
-import com.azure.csu.tiger.web.vo.ProductListVO;
+import com.azure.csu.tiger.grpc.lib.*;
+import com.azure.csu.tiger.web.vo.SkuListVO;
+import com.azure.csu.tiger.web.vo.SkuDetailVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -39,8 +38,8 @@ public class ProductController {
 
     @ApiOperation(value = "商品查询", notes = "纯Mysql查询")
     @GetMapping("/product/search")
-    public ResponseEntity<List<ProductListVO>> searchSku(@RequestParam(required = false) String name, @RequestParam(required = false) Long categoryId,
-                                                         @RequestParam(required = true) int pageNo, @RequestParam(required = true) int pageNum) {
+    public ResponseEntity<List<SkuListVO>> searchSku(@RequestParam(required = false) String name, @RequestParam(required = false) Long categoryId,
+                                                     @RequestParam(required = true) int pageNo, @RequestParam(required = true) int pageNum) {
         logger.info("name: {}, categoryId: {}, pageNo: {}, pageNum: {}", name, categoryId, pageNo, pageNum);
         ListSkuRequest2.Builder builder = ListSkuRequest2.newBuilder();
         if (name != null) {
@@ -56,7 +55,20 @@ public class ProductController {
         ListSkuInfoResponse response = productStub.searchSku(builder.build());
 
         if (response.getSuccess()) {
-            return ResponseEntity.ok(response.getDatasList().stream().map( data -> ProductListVO.from(data)).collect(Collectors.toList()));
+            return ResponseEntity.ok(response.getDatasList().stream().map( data -> SkuListVO.from(data)).collect(Collectors.toList()));
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
+    @ApiOperation(value = "商品详情", notes = "纯Redis查询")
+    @GetMapping("/product/detail")
+    public ResponseEntity<SkuDetailVO> findSkuDetail(@RequestParam(required = true) Long skuId) {
+
+        GetSkuDetailResponse response = productStub.getSkuDetailInfo(GetSkuDetailRequest.newBuilder().setSkuId(skuId).build());
+
+        if (response.getSuccess()) {
+            return ResponseEntity.ok(SkuDetailVO.from(response.getData()));
         }
 
         return ResponseEntity.badRequest().build();

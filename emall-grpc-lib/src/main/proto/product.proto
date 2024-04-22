@@ -16,6 +16,9 @@ service Product {
   // list sku info
   rpc searchSku (ListSkuRequest2) returns (ListSkuInfoResponse) {
   }
+  // get sku detail
+  rpc getSkuDetailInfo(GetSkuDetailRequest) returns (GetSkuDetailResponse) {
+  }
 }
 
 message FindCategoryRequest {
@@ -48,4 +51,12 @@ message ListSkuInfoResponse {
   int32 code = 1;
   bool success = 2;
   repeated SkuInfo datas = 3;
+}
+message GetSkuDetailRequest {
+  int64 skuId = 1;
+}
+message GetSkuDetailResponse {
+  int32 code = 1;
+  bool success = 2;
+  SkuDetailInfo data = 3;
 }

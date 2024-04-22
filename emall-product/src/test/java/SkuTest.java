@@ -3,6 +3,7 @@ import com.azure.csu.tiger.product.EmallProductApplication;
 import com.azure.csu.tiger.product.cache.bo.SkuItemBo;
 import com.azure.csu.tiger.product.dao.SkuDao;
 import com.azure.csu.tiger.product.dao.SpuDao;
+import com.azure.csu.tiger.product.dto.SkuDetailDTO;
 import com.azure.csu.tiger.product.jooq.tables.records.SkuRecord;
 import com.azure.csu.tiger.product.jooq.tables.records.SpuRecord;
 import com.azure.csu.tiger.product.service.SkuService;
@@ -130,6 +131,12 @@ public class SkuTest {
         List<SkuItemBo> skuInfoFromCache = skuService.findSkuInfoFromCache(skuIds);
 
         System.out.println(JsonUtil.obj2String(skuInfoFromCache));
+    }
+
+    @Test
+    public void getSkuDetailInfo() {
+        SkuDetailDTO skuDetailInfo = skuService.getSkuDetailInfo(4L);
+        System.out.println(JsonUtil.obj2String(skuDetailInfo));
     }
 
     @Test

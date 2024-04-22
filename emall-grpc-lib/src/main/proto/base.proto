@@ -4,6 +4,13 @@ option java_multiple_files = true;
 option java_package = "com.azure.csu.tiger.grpc.lib";
 option java_outer_classname = "BaseProto";
 
+message CartItem {
+  int64 uid = 1;
+  int64 skuId = 2;
+  int64 skuNum = 3;
+  string name = 4;
+  int64 price = 5;
+}
 message SkuInfo {
   int64 skuId = 1;
   int64 spuId = 2;
@@ -12,4 +19,19 @@ message SkuInfo {
   int64 price = 5;
   int64 stock = 6;
   map<string, string> attr = 7;
+}
+message SkuDetailInfo {
+  int64 skuId = 1;
+  string skuName = 2;
+  string spuName = 3;
+  int64 categoryId1 = 4;
+  int64 categoryId2 = 5;
+  int64 categoryId3 = 6;
+  string categoryName1 = 7;
+  string categoryName2 = 8;
+  string categoryName3 = 9;
+  string description = 10;
+  int64 price = 11;
+  int64 stock = 12;
+  map<string, string> attr = 13;
 }
