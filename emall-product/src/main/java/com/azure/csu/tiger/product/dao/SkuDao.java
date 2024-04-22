@@ -11,5 +11,7 @@ public interface SkuDao {
 
     List<SkuRecord> listSku(Collection<Long> ids);
 
-    List<SkuRecord> listAllSku(int offset, int limit);
+    List<SkuRecord> listSku(int offset, int limit);
+
+    List<SkuRecord> listSku(SkuRecord record, int offset, int limit);
 }

@@ -13,6 +13,9 @@ service Product {
   // list sku info
   rpc listSkuInfo (ListSkuRequest) returns (ListSkuInfoResponse) {
   }
+  // list sku info
+  rpc searchSku (ListSkuRequest2) returns (ListSkuInfoResponse) {
+  }
 }
 
 message FindCategoryRequest {
@@ -34,6 +37,12 @@ message CategoryListResponse {
 
 message ListSkuRequest {
   repeated int64 skuId = 1;
+}
+message ListSkuRequest2 {
+  string name = 2;
+  int64 categoryId = 3;
+  int32 offset = 4;
+  int32 limit = 5;
 }
 message ListSkuInfoResponse {
   int32 code = 1;

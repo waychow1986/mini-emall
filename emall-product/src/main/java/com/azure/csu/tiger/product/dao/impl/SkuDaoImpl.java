@@ -4,12 +4,11 @@ import com.azure.csu.tiger.product.dao.SkuDao;
 import com.azure.csu.tiger.product.dao.SpuDao;
 import com.azure.csu.tiger.product.jooq.tables.records.SkuRecord;
 import com.azure.csu.tiger.product.jooq.tables.records.SpuRecord;
-import org.jooq.DSLContext;
-import org.jooq.InsertValuesStep6;
-import org.jooq.InsertValuesStep8;
+import org.jooq.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -43,10 +42,31 @@ public class SkuDaoImpl implements SkuDao {
     }
 
     @Override
-    public List<SkuRecord> listAllSku(int offset, int limit) {
+    public List<SkuRecord> listSku(int offset, int limit) {
         if (offset < 0 || limit < 0) {
             return Collections.emptyList();
         }
         return context.select().from(SKU).offset(offset).limit(limit).fetchInto(SkuRecord.class);
+    }
+
+    @Override
+    public List<SkuRecord> listSku(SkuRecord record, int offset, int limit) {
+        if (record == null) {
+            return Collections.emptyList();
+        }
+        SelectConditionStep<Record> where = context.select().from(SKU).where(SKU.IS_DELETED.eq((byte) 0));
+        if (StringUtils.hasLength(record.getName())) {
+            where.and(SKU.NAME.like("%"+record.getName()+"%"));
+        }
+        if (record.getCategoryId() != null && record.getCategoryId() > 0) {
+            where.and(SKU.CATEGORY_ID.eq(record.getCategoryId()));
+        }
+        if (limit >= 0) {
+            if (offset >= 0) {
+                where.offset(offset);
+            }
+            where.limit(limit);
+        }
+        return where.fetchInto(SkuRecord.class);
     }
 }

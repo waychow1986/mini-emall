@@ -2,19 +2,21 @@ package com.azure.csu.tiger.web.controller;
 
 import com.azure.csu.tiger.grpc.lib.*;
 import com.azure.csu.tiger.web.vo.CartDetailVO;
-import com.azure.csu.tiger.web.vo.CategoryVO;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
+@Api(tags = "Cart Rest API interface")
 @RefreshScope
 @Controller
 public class CartController {
@@ -25,7 +27,8 @@ public class CartController {
     @GrpcClient("emall-product")
     private ProductGrpc.ProductBlockingStub productStub;
 
-    @RequestMapping("/cart/add")
+    @ApiOperation(value = "添加购物车", notes = "Redis与Mysql双写")
+    @GetMapping("/cart/add")
     public ResponseEntity<String> addCart(@RequestParam(required = true) Long uid, @RequestParam(required = true) Long skuId) throws ExecutionException, InterruptedException {
 
         if (uid == null || skuId == null) {
@@ -49,7 +52,8 @@ public class CartController {
         return ResponseEntity.badRequest().build();
     }
 
-    @RequestMapping("/cart/list")
+    @ApiOperation(value = "购物车查询", notes = "纯Redis查询")
+    @GetMapping("/cart/list")
     public ResponseEntity<List<CartDetailVO>> listCart(@RequestParam(required = true) Long uid) throws ExecutionException, InterruptedException {
 
         if (uid == null) {

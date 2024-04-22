@@ -12,4 +12,6 @@ public class Constant {
     public static final String REDIS_SPU_PREFIX = "PRODUCT:SPU:";
     public static final String REDIS_CATEGORY_PREFIX = "PRODUCT:CATEGORY:";
 
+    public static final String REDIS_LOCK_CART_ADD_PREFIX = "LOCK:USER:CART:ADD:";
+
 }

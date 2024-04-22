@@ -16,7 +16,7 @@ spring:
       on-profile: dev
   cloud:
     consul:
-      host: 20.171.143.16
+      host: 127.0.0.1
       port: 8500
       discovery:
         metadata:
