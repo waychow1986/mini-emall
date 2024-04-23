@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: emall-product
-          image: acrmall.azurecr.io/emall-product:v0.3
+          image: acrmall.azurecr.io/emall-product:v0.6
           resources:
             limits:
               cpu: 2

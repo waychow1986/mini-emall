@@ -1,12 +1,12 @@
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   redis:
     database: 0
-    #    host: 20.252.202.28
-    #    password: 4L62C7zQZg
-    #    port: 7777
-    host: sheintest.redis.cache.windows.net
-    port: 6379
-    password: DFALHzmo7mAkMYxTCrrOqwuepRKLYIEhIAzCaAzmkg4=
+    host: 10.1.0.70
+    port: 7617
+    password: 4L62C7zQZg
     jedis:
       pool:
         enable: true
@@ -16,7 +16,7 @@ spring:
         max-wait: -1
     connect-timeout: 30000
   zipkin:
-    base-url: http://20.171.143.16:9411/
+    base-url: http://20.2.136.248:9411/
     sender:
       type: web #使用http的方式传输数据
     sleuth:
@@ -36,6 +36,13 @@ grpc:
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
+    emall-user:
+      address: 'discovery:///emall-user'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+swagger:
+  enabled: true
 #logging:
 #  level:
 #    root: debug

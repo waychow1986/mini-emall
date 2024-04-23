@@ -17,7 +17,7 @@ spring:
         max-wait: -1
     connect-timeout: 30000
   zipkin:
-    base-url: http://20.171.143.16:9411/
+    base-url: http://20.2.136.248:9411/
     sender:
       type: web #使用http的方式传输数据
     sleuth:
