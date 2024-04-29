@@ -8,6 +8,7 @@ spring:
   application:
     name: emall-web
 management:
+  context-path: /emall
   health:
     redis:
       enabled: false
@@ -22,6 +23,7 @@ spring:
       host: 127.0.0.1
       port: 8500
       discovery:
+        health-check-path: ${server.servlet.context-path}/actuator/health
         instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
 #        ip-address: 207.46.139.72
@@ -38,6 +40,7 @@ spring:
       host: ${consul_client_ip}
       port: 8500
       discovery:
+        health-check-path: ${server.servlet.context-path}/actuator/health
         instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
 #        ip-address: 4.242.239.19

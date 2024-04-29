@@ -1,4 +1,4 @@
-package com.azure.csu.tiger.order.service;
+package com.azure.csu.tiger.order.service.impl;
 
 import com.azure.csu.tiger.grpc.lib.HelloReply;
 import com.azure.csu.tiger.grpc.lib.HelloRequest;

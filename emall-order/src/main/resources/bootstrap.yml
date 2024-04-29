@@ -23,7 +23,7 @@ spring:
           gRPC_port: 9092
         instance-id: ${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}
         prefer-ip-address: true
-        ip-address: 4.242.239.19
+#        ip-address: 4.242.239.19
       config:
         enabled: true
         format: yaml

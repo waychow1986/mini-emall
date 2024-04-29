@@ -106,9 +106,9 @@
                 <configuration>
                     <jdbc>
                         <driver>com.mysql.cj.jdbc.Driver</driver>
-                        <url>jdbc:mysql://emall.mysql.database.azure.com:3306/product_center</url>
-                        <user>emall</user>
-                        <password>Q1w2e3r4t5y6</password>
+                        <url>jdbc:mysql://10.2.0.9:3306/product_center</url>
+                        <user>root</user>
+                        <password>Emallmysql1@</password>
                     </jdbc>
                     <generator>
                         <database>

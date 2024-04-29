@@ -35,3 +35,27 @@ message SkuDetailInfo {
   int64 stock = 12;
   map<string, string> attr = 13;
 }
+message OrderItemSku {
+  int64 skuId = 1;
+  int64 skuPrice = 2;
+  int64 skuNum = 3;
+  int64 splitCouponAmount = 4;
+  string skuName = 5;
+}
+message OrderInfo {
+  int64 userId = 1;
+  string address = 2;
+  string sourceType = 3;
+  int64 totalAmount = 4;
+  int64 couponAmount = 5;
+  int64 shippingAmount = 6;
+  int64 payAmount = 7;
+  string comment = 8;
+  string shipping_no = 9;
+  string status = 10;
+  string order_sn = 11;
+  string createTime = 12;
+  string sendTime = 13;
+  string finishTime = 14;
+  repeated OrderItemSku skuData = 15;
+}

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://10.2.0.9:6666/user_center
+    url: jdbc:mysql://10.2.0.9:3306/user_center
     username: root
     password: Emallmysql1@
   redis:

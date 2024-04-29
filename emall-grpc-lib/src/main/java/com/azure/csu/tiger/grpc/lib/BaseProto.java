@@ -39,6 +39,16 @@ public final class BaseProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SkuDetailInfo_AttrEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_OrderItemSku_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_OrderItemSku_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_OrderInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_OrderInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -63,8 +73,19 @@ public final class BaseProto {
       "\t\022\023\n\013description\030\n \001(\t\022\r\n\005price\030\013 \001(\003\022\r\n" +
       "\005stock\030\014 \001(\003\022&\n\004attr\030\r \003(\0132\030.SkuDetailIn" +
       "fo.AttrEntry\032+\n\tAttrEntry\022\013\n\003key\030\001 \001(\t\022\r" +
-      "\n\005value\030\002 \001(\t:\0028\001B+\n\034com.azure.csu.tiger" +
-      ".grpc.libB\tBaseProtoP\001b\006proto3"
+      "\n\005value\030\002 \001(\t:\0028\001\"k\n\014OrderItemSku\022\r\n\005sku" +
+      "Id\030\001 \001(\003\022\020\n\010skuPrice\030\002 \001(\003\022\016\n\006skuNum\030\003 \001" +
+      "(\003\022\031\n\021splitCouponAmount\030\004 \001(\003\022\017\n\007skuName" +
+      "\030\005 \001(\t\"\270\002\n\tOrderInfo\022\016\n\006userId\030\001 \001(\003\022\017\n\007" +
+      "address\030\002 \001(\t\022\022\n\nsourceType\030\003 \001(\t\022\023\n\013tot" +
+      "alAmount\030\004 \001(\003\022\024\n\014couponAmount\030\005 \001(\003\022\026\n\016" +
+      "shippingAmount\030\006 \001(\003\022\021\n\tpayAmount\030\007 \001(\003\022" +
+      "\017\n\007comment\030\010 \001(\t\022\023\n\013shipping_no\030\t \001(\t\022\016\n" +
+      "\006status\030\n \001(\t\022\020\n\010order_sn\030\013 \001(\t\022\022\n\ncreat" +
+      "eTime\030\014 \001(\t\022\020\n\010sendTime\030\r \001(\t\022\022\n\nfinishT" +
+      "ime\030\016 \001(\t\022\036\n\007skuData\030\017 \003(\0132\r.OrderItemSk" +
+      "uB+\n\034com.azure.csu.tiger.grpc.libB\tBaseP" +
+      "rotoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -100,6 +121,18 @@ public final class BaseProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SkuDetailInfo_AttrEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_OrderItemSku_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_OrderItemSku_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_OrderItemSku_descriptor,
+        new java.lang.String[] { "SkuId", "SkuPrice", "SkuNum", "SplitCouponAmount", "SkuName", });
+    internal_static_OrderInfo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_OrderInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_OrderInfo_descriptor,
+        new java.lang.String[] { "UserId", "Address", "SourceType", "TotalAmount", "CouponAmount", "ShippingAmount", "PayAmount", "Comment", "ShippingNo", "Status", "OrderSn", "CreateTime", "SendTime", "FinishTime", "SkuData", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

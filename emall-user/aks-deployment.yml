@@ -19,10 +19,10 @@ spec:
           resources:
             limits:
               cpu: 2
-              memory: 1024Mi
+              memory: 4096Mi
             requests:
               cpu: 2
-              memory: 1024Mi
+              memory: 4096Mi
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8083

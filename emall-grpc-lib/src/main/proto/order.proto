@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.azure.csu.tiger.grpc.lib";
+option java_outer_classname = "OrderProto";
+import "base.proto";
+
+// The Order service definition.
+service Order {
+  // create order
+  rpc createOrder(CreateOrderRequest) returns (CreateOrderResponse) {
+  }
+  // list order
+  rpc listOrder(ListOrderRequest) returns (ListOrderResponse) {
+  }
+
+}
+
+message CreateOrderRequest {
+  int64 userId = 1;
+  int64 addressId = 2;
+  int32 sourceType = 3;
+  int64 totalAmount = 4;
+  int64 couponAmount = 5;
+  int64 shippingAmount = 6;
+  int64 payAmount = 7;
+  string comment = 8;
+  repeated OrderItemSku skuData = 9;
+}
+message  CreateOrderResponse {
+  int32 code = 1;
+  bool success = 2;
+}
+message ListOrderRequest {
+  int64 orderId = 1;
+}
+message ListOrderResponse {
+  int32 code = 1;
+  bool success = 2;
+  repeated OrderInfo data = 3;
+}
