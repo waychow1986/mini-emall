@@ -21,4 +21,12 @@ public class OrderInfoDaoImpl implements OrderInfoDao {
         }
         return context.insertInto(ORDER_INFO).set(record).returning(ORDER_INFO.ID).fetchOne().getId();
     }
+
+    @Override
+    public OrderInfoRecord findOrderInfo(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return context.select().from(ORDER_INFO).where(ORDER_INFO.ID.eq(id)).fetchSingleInto(OrderInfoRecord.class);
+    }
 }

@@ -3,8 +3,8 @@
 
 package com.azure.csu.tiger.grpc.lib;
 
-public interface ListOrderRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ListOrderRequest)
+public interface GetOrderRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:GetOrderRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

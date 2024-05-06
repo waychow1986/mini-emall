@@ -25,15 +25,15 @@ public final class OrderProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CreateOrderResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ListOrderRequest_descriptor;
+    internal_static_GetOrderRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ListOrderRequest_fieldAccessorTable;
+      internal_static_GetOrderRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ListOrderResponse_descriptor;
+    internal_static_GetOrderResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ListOrderResponse_fieldAccessorTable;
+      internal_static_GetOrderResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -50,14 +50,14 @@ public final class OrderProto {
       "ount\030\006 \001(\003\022\021\n\tpayAmount\030\007 \001(\003\022\017\n\007comment" +
       "\030\010 \001(\t\022\036\n\007skuData\030\t \003(\0132\r.OrderItemSku\"4" +
       "\n\023CreateOrderResponse\022\014\n\004code\030\001 \001(\005\022\017\n\007s" +
-      "uccess\030\002 \001(\010\"#\n\020ListOrderRequest\022\017\n\007orde" +
-      "rId\030\001 \001(\003\"L\n\021ListOrderResponse\022\014\n\004code\030\001" +
-      " \001(\005\022\017\n\007success\030\002 \001(\010\022\030\n\004data\030\003 \003(\0132\n.Or" +
-      "derInfo2y\n\005Order\022:\n\013createOrder\022\023.Create" +
-      "OrderRequest\032\024.CreateOrderResponse\"\000\0224\n\t" +
-      "listOrder\022\021.ListOrderRequest\032\022.ListOrder" +
-      "Response\"\000B,\n\034com.azure.csu.tiger.grpc.l" +
-      "ibB\nOrderProtoP\001b\006proto3"
+      "uccess\030\002 \001(\010\"\"\n\017GetOrderRequest\022\017\n\007order" +
+      "Id\030\001 \001(\003\"K\n\020GetOrderResponse\022\014\n\004code\030\001 \001" +
+      "(\005\022\017\n\007success\030\002 \001(\010\022\030\n\004data\030\003 \001(\0132\n.Orde" +
+      "rInfo2v\n\005Order\022:\n\013createOrder\022\023.CreateOr" +
+      "derRequest\032\024.CreateOrderResponse\"\000\0221\n\010ge" +
+      "tOrder\022\020.GetOrderRequest\032\021.GetOrderRespo" +
+      "nse\"\000B,\n\034com.azure.csu.tiger.grpc.libB\nO" +
+      "rderProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -76,17 +76,17 @@ public final class OrderProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CreateOrderResponse_descriptor,
         new java.lang.String[] { "Code", "Success", });
-    internal_static_ListOrderRequest_descriptor =
+    internal_static_GetOrderRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_ListOrderRequest_fieldAccessorTable = new
+    internal_static_GetOrderRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ListOrderRequest_descriptor,
+        internal_static_GetOrderRequest_descriptor,
         new java.lang.String[] { "OrderId", });
-    internal_static_ListOrderResponse_descriptor =
+    internal_static_GetOrderResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_ListOrderResponse_fieldAccessorTable = new
+    internal_static_GetOrderResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ListOrderResponse_descriptor,
+        internal_static_GetOrderResponse_descriptor,
         new java.lang.String[] { "Code", "Success", "Data", });
     com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor();
   }

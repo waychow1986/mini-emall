@@ -10,8 +10,8 @@ service Order {
   // create order
   rpc createOrder(CreateOrderRequest) returns (CreateOrderResponse) {
   }
-  // list order
-  rpc listOrder(ListOrderRequest) returns (ListOrderResponse) {
+  // Get order
+  rpc getOrder(GetOrderRequest) returns (GetOrderResponse) {
   }
 
 }
@@ -27,15 +27,15 @@ message CreateOrderRequest {
   string comment = 8;
   repeated OrderItemSku skuData = 9;
 }
-message  CreateOrderResponse {
+message CreateOrderResponse {
   int32 code = 1;
   bool success = 2;
 }
-message ListOrderRequest {
+message GetOrderRequest {
   int64 orderId = 1;
 }
-message ListOrderResponse {
+message GetOrderResponse {
   int32 code = 1;
   bool success = 2;
-  repeated OrderInfo data = 3;
+  OrderInfo data = 3;
 }

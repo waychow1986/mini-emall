@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @GrpcService
@@ -33,7 +34,15 @@ public class OrderRpc extends OrderGrpc.OrderImplBase {
     }
 
     @Override
-    public void listOrder(ListOrderRequest request, StreamObserver<ListOrderResponse> responseObserver) {
-        super.listOrder(request, responseObserver);
+    public void getOrder(GetOrderRequest request, StreamObserver<GetOrderResponse> responseObserver) {
+        OrderInfo orderInfo = orderService.getOrderInfo(request.getOrderId());
+        List<OrderItemSku> orderItems = orderService.getOrderItems(request.getOrderId());
+        orderInfo.getSkuDataList().addAll(orderItems);
+
+        GetOrderResponse response = GetOrderResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).setData(orderInfo).build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
+
 }

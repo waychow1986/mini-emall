@@ -8,6 +8,7 @@ import org.jooq.InsertValuesStep7;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.azure.csu.tiger.order.jooq.Tables.ORDER_ITEM;
@@ -25,5 +26,14 @@ public class OrderItemDaoImpl implements OrderItemDao {
         items.stream().forEach(r -> valuesStep7.values(r.getOrderId(), r.getSkuId(), r.getSkuPrice(), r.getSkuNum(), r.getSplitCouponAmount(), r.getCreateUserId(), r.getModifyUserId()));
 
         valuesStep7.execute();
+    }
+
+    @Override
+    public List<OrderItemRecord> listOrderItems(Long orderId) {
+        if (orderId == null) {
+            return Collections.emptyList();
+        }
+
+        return context.select().from(ORDER_ITEM).where(ORDER_ITEM.ORDER_ID.eq(orderId)).fetchInto(OrderItemRecord.class);
     }
 }

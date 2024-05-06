@@ -26,7 +26,7 @@ public enum OrderStatus {
         return name;
     }
 
-    public OrderStatus fromType(Integer type) {
+    public static OrderStatus fromType(Integer type) {
         for (OrderStatus value : OrderStatus.values()) {
             if (Objects.equals(type, value.getType())) {
                 return value;

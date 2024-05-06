@@ -1,10 +1,14 @@
 package com.azure.csu.tiger.order.dto;
 
+import com.azure.csu.tiger.common.utils.OrderStatus;
+import com.azure.csu.tiger.common.utils.SourceType;
 import com.azure.csu.tiger.grpc.lib.CreateOrderRequest;
+import com.azure.csu.tiger.grpc.lib.OrderInfo;
 import com.azure.csu.tiger.order.jooq.tables.records.OrderInfoRecord;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
@@ -88,5 +92,23 @@ public class OrderInfoDto {
         dto.setPayAmount(order.getPayAmount());
         dto.setComment(order.getComment());
         return dto;
+    }
+
+    public static OrderInfo transformRecordToGrpc(OrderInfoRecord record) {
+
+        return OrderInfo.newBuilder().setUserId(record.getUserId())
+                .setAddress("江苏省南京市")
+                .setSourceType(SourceType.fromType(record.getSourceType().intValue()).getName())
+                .setTotalAmount(record.getTotalAmount())
+                .setCouponAmount(record.getCouponAmount())
+                .setShippingAmount(record.getShippingAmount())
+                .setPayAmount(record.getPayAmount())
+                .setComment(record.getComment())
+                .setShippingNo(record.getShippingNo() == null ? "" : record.getShippingNo())
+                .setStatus(OrderStatus.fromType(record.getStatus().intValue()).getName())
+                .setOrderSn(record.getOrderSn())
+                .setCreateTime(record.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .setSendTime("")
+                .setFinishTime("").build();
     }
 }

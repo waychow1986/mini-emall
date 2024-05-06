@@ -25,7 +25,7 @@ public enum SourceType {
         return name;
     }
 
-    public SourceType fromType(Integer type) {
+    public static SourceType fromType(Integer type) {
         for (SourceType value : SourceType.values()) {
             if (Objects.equals(type, value.getType())) {
                 return value;

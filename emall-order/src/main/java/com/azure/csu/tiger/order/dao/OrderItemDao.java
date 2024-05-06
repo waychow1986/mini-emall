@@ -7,4 +7,6 @@ import java.util.List;
 public interface OrderItemDao {
 
     void createOrderItem(List<OrderItemRecord> items);
+
+    List<OrderItemRecord> listOrderItems(Long orderId);
 }

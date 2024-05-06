@@ -61,35 +61,35 @@ public final class OrderGrpc {
     return getCreateOrderMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListOrderRequest,
-      com.azure.csu.tiger.grpc.lib.ListOrderResponse> getListOrderMethod;
+  private static volatile io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetOrderRequest,
+      com.azure.csu.tiger.grpc.lib.GetOrderResponse> getGetOrderMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "listOrder",
-      requestType = com.azure.csu.tiger.grpc.lib.ListOrderRequest.class,
-      responseType = com.azure.csu.tiger.grpc.lib.ListOrderResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "getOrder",
+      requestType = com.azure.csu.tiger.grpc.lib.GetOrderRequest.class,
+      responseType = com.azure.csu.tiger.grpc.lib.GetOrderResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListOrderRequest,
-      com.azure.csu.tiger.grpc.lib.ListOrderResponse> getListOrderMethod() {
-    io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ListOrderRequest, com.azure.csu.tiger.grpc.lib.ListOrderResponse> getListOrderMethod;
-    if ((getListOrderMethod = OrderGrpc.getListOrderMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetOrderRequest,
+      com.azure.csu.tiger.grpc.lib.GetOrderResponse> getGetOrderMethod() {
+    io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.GetOrderRequest, com.azure.csu.tiger.grpc.lib.GetOrderResponse> getGetOrderMethod;
+    if ((getGetOrderMethod = OrderGrpc.getGetOrderMethod) == null) {
       synchronized (OrderGrpc.class) {
-        if ((getListOrderMethod = OrderGrpc.getListOrderMethod) == null) {
-          OrderGrpc.getListOrderMethod = getListOrderMethod =
-              io.grpc.MethodDescriptor.<com.azure.csu.tiger.grpc.lib.ListOrderRequest, com.azure.csu.tiger.grpc.lib.ListOrderResponse>newBuilder()
+        if ((getGetOrderMethod = OrderGrpc.getGetOrderMethod) == null) {
+          OrderGrpc.getGetOrderMethod = getGetOrderMethod =
+              io.grpc.MethodDescriptor.<com.azure.csu.tiger.grpc.lib.GetOrderRequest, com.azure.csu.tiger.grpc.lib.GetOrderResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "listOrder"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getOrder"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.azure.csu.tiger.grpc.lib.ListOrderRequest.getDefaultInstance()))
+                  com.azure.csu.tiger.grpc.lib.GetOrderRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.azure.csu.tiger.grpc.lib.ListOrderResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new OrderMethodDescriptorSupplier("listOrder"))
+                  com.azure.csu.tiger.grpc.lib.GetOrderResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new OrderMethodDescriptorSupplier("getOrder"))
               .build();
         }
       }
     }
-    return getListOrderMethod;
+    return getGetOrderMethod;
   }
 
   /**
@@ -155,12 +155,12 @@ public final class OrderGrpc {
 
     /**
      * <pre>
-     * list order
+     * Get order
      * </pre>
      */
-    public void listOrder(com.azure.csu.tiger.grpc.lib.ListOrderRequest request,
-        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListOrderResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getListOrderMethod(), responseObserver);
+    public void getOrder(com.azure.csu.tiger.grpc.lib.GetOrderRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetOrderResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetOrderMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -173,12 +173,12 @@ public final class OrderGrpc {
                 com.azure.csu.tiger.grpc.lib.CreateOrderResponse>(
                   this, METHODID_CREATE_ORDER)))
           .addMethod(
-            getListOrderMethod(),
+            getGetOrderMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.azure.csu.tiger.grpc.lib.ListOrderRequest,
-                com.azure.csu.tiger.grpc.lib.ListOrderResponse>(
-                  this, METHODID_LIST_ORDER)))
+                com.azure.csu.tiger.grpc.lib.GetOrderRequest,
+                com.azure.csu.tiger.grpc.lib.GetOrderResponse>(
+                  this, METHODID_GET_ORDER)))
           .build();
     }
   }
@@ -213,13 +213,13 @@ public final class OrderGrpc {
 
     /**
      * <pre>
-     * list order
+     * Get order
      * </pre>
      */
-    public void listOrder(com.azure.csu.tiger.grpc.lib.ListOrderRequest request,
-        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListOrderResponse> responseObserver) {
+    public void getOrder(com.azure.csu.tiger.grpc.lib.GetOrderRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetOrderResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getListOrderMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetOrderMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -252,12 +252,12 @@ public final class OrderGrpc {
 
     /**
      * <pre>
-     * list order
+     * Get order
      * </pre>
      */
-    public com.azure.csu.tiger.grpc.lib.ListOrderResponse listOrder(com.azure.csu.tiger.grpc.lib.ListOrderRequest request) {
+    public com.azure.csu.tiger.grpc.lib.GetOrderResponse getOrder(com.azure.csu.tiger.grpc.lib.GetOrderRequest request) {
       return blockingUnaryCall(
-          getChannel(), getListOrderMethod(), getCallOptions(), request);
+          getChannel(), getGetOrderMethod(), getCallOptions(), request);
     }
   }
 
@@ -291,18 +291,18 @@ public final class OrderGrpc {
 
     /**
      * <pre>
-     * list order
+     * Get order
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.azure.csu.tiger.grpc.lib.ListOrderResponse> listOrder(
-        com.azure.csu.tiger.grpc.lib.ListOrderRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.azure.csu.tiger.grpc.lib.GetOrderResponse> getOrder(
+        com.azure.csu.tiger.grpc.lib.GetOrderRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getListOrderMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetOrderMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_CREATE_ORDER = 0;
-  private static final int METHODID_LIST_ORDER = 1;
+  private static final int METHODID_GET_ORDER = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -325,9 +325,9 @@ public final class OrderGrpc {
           serviceImpl.createOrder((com.azure.csu.tiger.grpc.lib.CreateOrderRequest) request,
               (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.CreateOrderResponse>) responseObserver);
           break;
-        case METHODID_LIST_ORDER:
-          serviceImpl.listOrder((com.azure.csu.tiger.grpc.lib.ListOrderRequest) request,
-              (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListOrderResponse>) responseObserver);
+        case METHODID_GET_ORDER:
+          serviceImpl.getOrder((com.azure.csu.tiger.grpc.lib.GetOrderRequest) request,
+              (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.GetOrderResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -391,7 +391,7 @@ public final class OrderGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new OrderFileDescriptorSupplier())
               .addMethod(getCreateOrderMethod())
-              .addMethod(getListOrderMethod())
+              .addMethod(getGetOrderMethod())
               .build();
         }
       }

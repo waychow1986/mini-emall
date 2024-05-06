@@ -1,6 +1,8 @@
 package com.azure.csu.tiger.order.dto;
 
+import com.azure.csu.tiger.grpc.lib.OrderInfo;
 import com.azure.csu.tiger.grpc.lib.OrderItemSku;
+import com.azure.csu.tiger.order.jooq.tables.records.OrderInfoRecord;
 import com.azure.csu.tiger.order.jooq.tables.records.OrderItemRecord;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,5 +48,13 @@ public class OrderItemDto {
         record.setCreateUserId(createUserId);
         record.setModifyUserId(modifyUserId);
         return record;
+    }
+
+    public static OrderItemSku transformRecordToGrpc(OrderItemRecord record) {
+        return OrderItemSku.newBuilder().setSkuId(record.getSkuId())
+                .setSkuPrice(record.getSkuPrice())
+                .setSkuNum(record.getSkuNum())
+                .setSplitCouponAmount(record.getSplitCouponAmount())
+                .setSkuName("").build();
     }
 }

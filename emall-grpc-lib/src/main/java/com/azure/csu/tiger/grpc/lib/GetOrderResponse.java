@@ -4,26 +4,25 @@
 package com.azure.csu.tiger.grpc.lib;
 
 /**
- * Protobuf type {@code ListOrderResponse}
+ * Protobuf type {@code GetOrderResponse}
  */
-public final class ListOrderResponse extends
+public final class GetOrderResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ListOrderResponse)
-    ListOrderResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:GetOrderResponse)
+    GetOrderResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ListOrderResponse.newBuilder() to construct.
-  private ListOrderResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetOrderResponse.newBuilder() to construct.
+  private GetOrderResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ListOrderResponse() {
-    data_ = java.util.Collections.emptyList();
+  private GetOrderResponse() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ListOrderResponse();
+    return new GetOrderResponse();
   }
 
   @java.lang.Override
@@ -31,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ListOrderResponse(
+  private GetOrderResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -39,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -61,12 +59,16 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              data_ = new java.util.ArrayList<com.azure.csu.tiger.grpc.lib.OrderInfo>();
-              mutable_bitField0_ |= 0x00000001;
+            com.azure.csu.tiger.grpc.lib.OrderInfo.Builder subBuilder = null;
+            if (data_ != null) {
+              subBuilder = data_.toBuilder();
             }
-            data_.add(
-                input.readMessage(com.azure.csu.tiger.grpc.lib.OrderInfo.parser(), extensionRegistry));
+            data_ = input.readMessage(com.azure.csu.tiger.grpc.lib.OrderInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(data_);
+              data_ = subBuilder.buildPartial();
+            }
+
             break;
           }
           default: {
@@ -84,24 +86,21 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        data_ = java.util.Collections.unmodifiableList(data_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_ListOrderResponse_descriptor;
+    return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_GetOrderResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_ListOrderResponse_fieldAccessorTable
+    return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_GetOrderResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.azure.csu.tiger.grpc.lib.ListOrderResponse.class, com.azure.csu.tiger.grpc.lib.ListOrderResponse.Builder.class);
+            com.azure.csu.tiger.grpc.lib.GetOrderResponse.class, com.azure.csu.tiger.grpc.lib.GetOrderResponse.Builder.class);
   }
 
   public static final int CODE_FIELD_NUMBER = 1;
@@ -127,43 +126,29 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int DATA_FIELD_NUMBER = 3;
-  private java.util.List<com.azure.csu.tiger.grpc.lib.OrderInfo> data_;
+  private com.azure.csu.tiger.grpc.lib.OrderInfo data_;
   /**
-   * <code>repeated .OrderInfo data = 3;</code>
+   * <code>.OrderInfo data = 3;</code>
+   * @return Whether the data field is set.
    */
   @java.lang.Override
-  public java.util.List<com.azure.csu.tiger.grpc.lib.OrderInfo> getDataList() {
-    return data_;
+  public boolean hasData() {
+    return data_ != null;
   }
   /**
-   * <code>repeated .OrderInfo data = 3;</code>
+   * <code>.OrderInfo data = 3;</code>
+   * @return The data.
    */
   @java.lang.Override
-  public java.util.List<? extends com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder> 
-      getDataOrBuilderList() {
-    return data_;
+  public com.azure.csu.tiger.grpc.lib.OrderInfo getData() {
+    return data_ == null ? com.azure.csu.tiger.grpc.lib.OrderInfo.getDefaultInstance() : data_;
   }
   /**
-   * <code>repeated .OrderInfo data = 3;</code>
+   * <code>.OrderInfo data = 3;</code>
    */
   @java.lang.Override
-  public int getDataCount() {
-    return data_.size();
-  }
-  /**
-   * <code>repeated .OrderInfo data = 3;</code>
-   */
-  @java.lang.Override
-  public com.azure.csu.tiger.grpc.lib.OrderInfo getData(int index) {
-    return data_.get(index);
-  }
-  /**
-   * <code>repeated .OrderInfo data = 3;</code>
-   */
-  @java.lang.Override
-  public com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder getDataOrBuilder(
-      int index) {
-    return data_.get(index);
+  public com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder getDataOrBuilder() {
+    return getData();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -186,8 +171,8 @@ private static final long serialVersionUID = 0L;
     if (success_ != false) {
       output.writeBool(2, success_);
     }
-    for (int i = 0; i < data_.size(); i++) {
-      output.writeMessage(3, data_.get(i));
+    if (data_ != null) {
+      output.writeMessage(3, getData());
     }
     unknownFields.writeTo(output);
   }
@@ -206,9 +191,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(2, success_);
     }
-    for (int i = 0; i < data_.size(); i++) {
+    if (data_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, data_.get(i));
+        .computeMessageSize(3, getData());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -220,17 +205,20 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.azure.csu.tiger.grpc.lib.ListOrderResponse)) {
+    if (!(obj instanceof com.azure.csu.tiger.grpc.lib.GetOrderResponse)) {
       return super.equals(obj);
     }
-    com.azure.csu.tiger.grpc.lib.ListOrderResponse other = (com.azure.csu.tiger.grpc.lib.ListOrderResponse) obj;
+    com.azure.csu.tiger.grpc.lib.GetOrderResponse other = (com.azure.csu.tiger.grpc.lib.GetOrderResponse) obj;
 
     if (getCode()
         != other.getCode()) return false;
     if (getSuccess()
         != other.getSuccess()) return false;
-    if (!getDataList()
-        .equals(other.getDataList())) return false;
+    if (hasData() != other.hasData()) return false;
+    if (hasData()) {
+      if (!getData()
+          .equals(other.getData())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -247,78 +235,78 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getSuccess());
-    if (getDataCount() > 0) {
+    if (hasData()) {
       hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getDataList().hashCode();
+      hash = (53 * hash) + getData().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(byte[] data)
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(java.io.InputStream input)
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseDelimitedFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse parseFrom(
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -331,7 +319,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.azure.csu.tiger.grpc.lib.ListOrderResponse prototype) {
+  public static Builder newBuilder(com.azure.csu.tiger.grpc.lib.GetOrderResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -347,26 +335,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ListOrderResponse}
+   * Protobuf type {@code GetOrderResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ListOrderResponse)
-      com.azure.csu.tiger.grpc.lib.ListOrderResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:GetOrderResponse)
+      com.azure.csu.tiger.grpc.lib.GetOrderResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_ListOrderResponse_descriptor;
+      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_GetOrderResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_ListOrderResponse_fieldAccessorTable
+      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_GetOrderResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.azure.csu.tiger.grpc.lib.ListOrderResponse.class, com.azure.csu.tiger.grpc.lib.ListOrderResponse.Builder.class);
+              com.azure.csu.tiger.grpc.lib.GetOrderResponse.class, com.azure.csu.tiger.grpc.lib.GetOrderResponse.Builder.class);
     }
 
-    // Construct using com.azure.csu.tiger.grpc.lib.ListOrderResponse.newBuilder()
+    // Construct using com.azure.csu.tiger.grpc.lib.GetOrderResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -379,7 +367,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getDataFieldBuilder();
       }
     }
     @java.lang.Override
@@ -390,10 +377,10 @@ private static final long serialVersionUID = 0L;
       success_ = false;
 
       if (dataBuilder_ == null) {
-        data_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        data_ = null;
       } else {
-        dataBuilder_.clear();
+        data_ = null;
+        dataBuilder_ = null;
       }
       return this;
     }
@@ -401,17 +388,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_ListOrderResponse_descriptor;
+      return com.azure.csu.tiger.grpc.lib.OrderProto.internal_static_GetOrderResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.azure.csu.tiger.grpc.lib.ListOrderResponse getDefaultInstanceForType() {
-      return com.azure.csu.tiger.grpc.lib.ListOrderResponse.getDefaultInstance();
+    public com.azure.csu.tiger.grpc.lib.GetOrderResponse getDefaultInstanceForType() {
+      return com.azure.csu.tiger.grpc.lib.GetOrderResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.azure.csu.tiger.grpc.lib.ListOrderResponse build() {
-      com.azure.csu.tiger.grpc.lib.ListOrderResponse result = buildPartial();
+    public com.azure.csu.tiger.grpc.lib.GetOrderResponse build() {
+      com.azure.csu.tiger.grpc.lib.GetOrderResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -419,16 +406,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.azure.csu.tiger.grpc.lib.ListOrderResponse buildPartial() {
-      com.azure.csu.tiger.grpc.lib.ListOrderResponse result = new com.azure.csu.tiger.grpc.lib.ListOrderResponse(this);
-      int from_bitField0_ = bitField0_;
+    public com.azure.csu.tiger.grpc.lib.GetOrderResponse buildPartial() {
+      com.azure.csu.tiger.grpc.lib.GetOrderResponse result = new com.azure.csu.tiger.grpc.lib.GetOrderResponse(this);
       result.code_ = code_;
       result.success_ = success_;
       if (dataBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          data_ = java.util.Collections.unmodifiableList(data_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
         result.data_ = data_;
       } else {
         result.data_ = dataBuilder_.build();
@@ -471,47 +453,24 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.azure.csu.tiger.grpc.lib.ListOrderResponse) {
-        return mergeFrom((com.azure.csu.tiger.grpc.lib.ListOrderResponse)other);
+      if (other instanceof com.azure.csu.tiger.grpc.lib.GetOrderResponse) {
+        return mergeFrom((com.azure.csu.tiger.grpc.lib.GetOrderResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.azure.csu.tiger.grpc.lib.ListOrderResponse other) {
-      if (other == com.azure.csu.tiger.grpc.lib.ListOrderResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.azure.csu.tiger.grpc.lib.GetOrderResponse other) {
+      if (other == com.azure.csu.tiger.grpc.lib.GetOrderResponse.getDefaultInstance()) return this;
       if (other.getCode() != 0) {
         setCode(other.getCode());
       }
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
-      if (dataBuilder_ == null) {
-        if (!other.data_.isEmpty()) {
-          if (data_.isEmpty()) {
-            data_ = other.data_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureDataIsMutable();
-            data_.addAll(other.data_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.data_.isEmpty()) {
-          if (dataBuilder_.isEmpty()) {
-            dataBuilder_.dispose();
-            dataBuilder_ = null;
-            data_ = other.data_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            dataBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getDataFieldBuilder() : null;
-          } else {
-            dataBuilder_.addAllMessages(other.data_);
-          }
-        }
+      if (other.hasData()) {
+        mergeData(other.getData());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -528,11 +487,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.azure.csu.tiger.grpc.lib.ListOrderResponse parsedMessage = null;
+      com.azure.csu.tiger.grpc.lib.GetOrderResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.azure.csu.tiger.grpc.lib.ListOrderResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.azure.csu.tiger.grpc.lib.GetOrderResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -541,7 +500,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
 
     private int code_ ;
     /**
@@ -605,239 +563,118 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.azure.csu.tiger.grpc.lib.OrderInfo> data_ =
-      java.util.Collections.emptyList();
-    private void ensureDataIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        data_ = new java.util.ArrayList<com.azure.csu.tiger.grpc.lib.OrderInfo>(data_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.azure.csu.tiger.grpc.lib.OrderInfo data_;
+    private com.google.protobuf.SingleFieldBuilderV3<
         com.azure.csu.tiger.grpc.lib.OrderInfo, com.azure.csu.tiger.grpc.lib.OrderInfo.Builder, com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder> dataBuilder_;
+    /**
+     * <code>.OrderInfo data = 3;</code>
+     * @return Whether the data field is set.
+     */
+    public boolean hasData() {
+      return dataBuilder_ != null || data_ != null;
+    }
+    /**
+     * <code>.OrderInfo data = 3;</code>
+     * @return The data.
+     */
+    public com.azure.csu.tiger.grpc.lib.OrderInfo getData() {
+      if (dataBuilder_ == null) {
+        return data_ == null ? com.azure.csu.tiger.grpc.lib.OrderInfo.getDefaultInstance() : data_;
+      } else {
+        return dataBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.OrderInfo data = 3;</code>
+     */
+    public Builder setData(com.azure.csu.tiger.grpc.lib.OrderInfo value) {
+      if (dataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        data_ = value;
+        onChanged();
+      } else {
+        dataBuilder_.setMessage(value);
+      }
 
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public java.util.List<com.azure.csu.tiger.grpc.lib.OrderInfo> getDataList() {
-      if (dataBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(data_);
-      } else {
-        return dataBuilder_.getMessageList();
-      }
+      return this;
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public int getDataCount() {
-      if (dataBuilder_ == null) {
-        return data_.size();
-      } else {
-        return dataBuilder_.getCount();
-      }
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public com.azure.csu.tiger.grpc.lib.OrderInfo getData(int index) {
-      if (dataBuilder_ == null) {
-        return data_.get(index);
-      } else {
-        return dataBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
     public Builder setData(
-        int index, com.azure.csu.tiger.grpc.lib.OrderInfo value) {
-      if (dataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureDataIsMutable();
-        data_.set(index, value);
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public Builder setData(
-        int index, com.azure.csu.tiger.grpc.lib.OrderInfo.Builder builderForValue) {
-      if (dataBuilder_ == null) {
-        ensureDataIsMutable();
-        data_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public Builder addData(com.azure.csu.tiger.grpc.lib.OrderInfo value) {
-      if (dataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureDataIsMutable();
-        data_.add(value);
-        onChanged();
-      } else {
-        dataBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public Builder addData(
-        int index, com.azure.csu.tiger.grpc.lib.OrderInfo value) {
-      if (dataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureDataIsMutable();
-        data_.add(index, value);
-        onChanged();
-      } else {
-        dataBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public Builder addData(
         com.azure.csu.tiger.grpc.lib.OrderInfo.Builder builderForValue) {
       if (dataBuilder_ == null) {
-        ensureDataIsMutable();
-        data_.add(builderForValue.build());
+        data_ = builderForValue.build();
         onChanged();
       } else {
-        dataBuilder_.addMessage(builderForValue.build());
+        dataBuilder_.setMessage(builderForValue.build());
       }
+
       return this;
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
-    public Builder addData(
-        int index, com.azure.csu.tiger.grpc.lib.OrderInfo.Builder builderForValue) {
+    public Builder mergeData(com.azure.csu.tiger.grpc.lib.OrderInfo value) {
       if (dataBuilder_ == null) {
-        ensureDataIsMutable();
-        data_.add(index, builderForValue.build());
+        if (data_ != null) {
+          data_ =
+            com.azure.csu.tiger.grpc.lib.OrderInfo.newBuilder(data_).mergeFrom(value).buildPartial();
+        } else {
+          data_ = value;
+        }
         onChanged();
       } else {
-        dataBuilder_.addMessage(index, builderForValue.build());
+        dataBuilder_.mergeFrom(value);
       }
+
       return this;
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public Builder addAllData(
-        java.lang.Iterable<? extends com.azure.csu.tiger.grpc.lib.OrderInfo> values) {
-      if (dataBuilder_ == null) {
-        ensureDataIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, data_);
-        onChanged();
-      } else {
-        dataBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
     public Builder clearData() {
       if (dataBuilder_ == null) {
-        data_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        data_ = null;
         onChanged();
       } else {
-        dataBuilder_.clear();
+        data_ = null;
+        dataBuilder_ = null;
       }
+
       return this;
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
-    public Builder removeData(int index) {
-      if (dataBuilder_ == null) {
-        ensureDataIsMutable();
-        data_.remove(index);
-        onChanged();
-      } else {
-        dataBuilder_.remove(index);
-      }
-      return this;
+    public com.azure.csu.tiger.grpc.lib.OrderInfo.Builder getDataBuilder() {
+      
+      onChanged();
+      return getDataFieldBuilder().getBuilder();
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
-    public com.azure.csu.tiger.grpc.lib.OrderInfo.Builder getDataBuilder(
-        int index) {
-      return getDataFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder getDataOrBuilder(
-        int index) {
-      if (dataBuilder_ == null) {
-        return data_.get(index);  } else {
-        return dataBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public java.util.List<? extends com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder> 
-         getDataOrBuilderList() {
+    public com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder getDataOrBuilder() {
       if (dataBuilder_ != null) {
-        return dataBuilder_.getMessageOrBuilderList();
+        return dataBuilder_.getMessageOrBuilder();
       } else {
-        return java.util.Collections.unmodifiableList(data_);
+        return data_ == null ?
+            com.azure.csu.tiger.grpc.lib.OrderInfo.getDefaultInstance() : data_;
       }
     }
     /**
-     * <code>repeated .OrderInfo data = 3;</code>
+     * <code>.OrderInfo data = 3;</code>
      */
-    public com.azure.csu.tiger.grpc.lib.OrderInfo.Builder addDataBuilder() {
-      return getDataFieldBuilder().addBuilder(
-          com.azure.csu.tiger.grpc.lib.OrderInfo.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public com.azure.csu.tiger.grpc.lib.OrderInfo.Builder addDataBuilder(
-        int index) {
-      return getDataFieldBuilder().addBuilder(
-          index, com.azure.csu.tiger.grpc.lib.OrderInfo.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .OrderInfo data = 3;</code>
-     */
-    public java.util.List<com.azure.csu.tiger.grpc.lib.OrderInfo.Builder> 
-         getDataBuilderList() {
-      return getDataFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilderV3<
         com.azure.csu.tiger.grpc.lib.OrderInfo, com.azure.csu.tiger.grpc.lib.OrderInfo.Builder, com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder> 
         getDataFieldBuilder() {
       if (dataBuilder_ == null) {
-        dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             com.azure.csu.tiger.grpc.lib.OrderInfo, com.azure.csu.tiger.grpc.lib.OrderInfo.Builder, com.azure.csu.tiger.grpc.lib.OrderInfoOrBuilder>(
-                data_,
-                ((bitField0_ & 0x00000001) != 0),
+                getData(),
                 getParentForChildren(),
                 isClean());
         data_ = null;
@@ -857,41 +694,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ListOrderResponse)
+    // @@protoc_insertion_point(builder_scope:GetOrderResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:ListOrderResponse)
-  private static final com.azure.csu.tiger.grpc.lib.ListOrderResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:GetOrderResponse)
+  private static final com.azure.csu.tiger.grpc.lib.GetOrderResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.azure.csu.tiger.grpc.lib.ListOrderResponse();
+    DEFAULT_INSTANCE = new com.azure.csu.tiger.grpc.lib.GetOrderResponse();
   }
 
-  public static com.azure.csu.tiger.grpc.lib.ListOrderResponse getDefaultInstance() {
+  public static com.azure.csu.tiger.grpc.lib.GetOrderResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ListOrderResponse>
-      PARSER = new com.google.protobuf.AbstractParser<ListOrderResponse>() {
+  private static final com.google.protobuf.Parser<GetOrderResponse>
+      PARSER = new com.google.protobuf.AbstractParser<GetOrderResponse>() {
     @java.lang.Override
-    public ListOrderResponse parsePartialFrom(
+    public GetOrderResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ListOrderResponse(input, extensionRegistry);
+      return new GetOrderResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ListOrderResponse> parser() {
+  public static com.google.protobuf.Parser<GetOrderResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ListOrderResponse> getParserForType() {
+  public com.google.protobuf.Parser<GetOrderResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.azure.csu.tiger.grpc.lib.ListOrderResponse getDefaultInstanceForType() {
+  public com.azure.csu.tiger.grpc.lib.GetOrderResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
