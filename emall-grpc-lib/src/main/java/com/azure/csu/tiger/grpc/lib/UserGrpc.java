@@ -92,6 +92,37 @@ public final class UserGrpc {
     return getListCartMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ClearCartRequest,
+      com.azure.csu.tiger.grpc.lib.ClearCartResponse> getClearCartMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "clearCart",
+      requestType = com.azure.csu.tiger.grpc.lib.ClearCartRequest.class,
+      responseType = com.azure.csu.tiger.grpc.lib.ClearCartResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ClearCartRequest,
+      com.azure.csu.tiger.grpc.lib.ClearCartResponse> getClearCartMethod() {
+    io.grpc.MethodDescriptor<com.azure.csu.tiger.grpc.lib.ClearCartRequest, com.azure.csu.tiger.grpc.lib.ClearCartResponse> getClearCartMethod;
+    if ((getClearCartMethod = UserGrpc.getClearCartMethod) == null) {
+      synchronized (UserGrpc.class) {
+        if ((getClearCartMethod = UserGrpc.getClearCartMethod) == null) {
+          UserGrpc.getClearCartMethod = getClearCartMethod =
+              io.grpc.MethodDescriptor.<com.azure.csu.tiger.grpc.lib.ClearCartRequest, com.azure.csu.tiger.grpc.lib.ClearCartResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "clearCart"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.ClearCartRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.azure.csu.tiger.grpc.lib.ClearCartResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserMethodDescriptorSupplier("clearCart"))
+              .build();
+        }
+      }
+    }
+    return getClearCartMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -163,6 +194,16 @@ public final class UserGrpc {
       asyncUnimplementedUnaryCall(getListCartMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * clear cart
+     * </pre>
+     */
+    public void clearCart(com.azure.csu.tiger.grpc.lib.ClearCartRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ClearCartResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getClearCartMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -179,6 +220,13 @@ public final class UserGrpc {
                 com.azure.csu.tiger.grpc.lib.ListCartRequest,
                 com.azure.csu.tiger.grpc.lib.ListCartResponse>(
                   this, METHODID_LIST_CART)))
+          .addMethod(
+            getClearCartMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.azure.csu.tiger.grpc.lib.ClearCartRequest,
+                com.azure.csu.tiger.grpc.lib.ClearCartResponse>(
+                  this, METHODID_CLEAR_CART)))
           .build();
     }
   }
@@ -221,6 +269,17 @@ public final class UserGrpc {
       asyncUnaryCall(
           getChannel().newCall(getListCartMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * clear cart
+     * </pre>
+     */
+    public void clearCart(com.azure.csu.tiger.grpc.lib.ClearCartRequest request,
+        io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ClearCartResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getClearCartMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -258,6 +317,16 @@ public final class UserGrpc {
     public com.azure.csu.tiger.grpc.lib.ListCartResponse listCart(com.azure.csu.tiger.grpc.lib.ListCartRequest request) {
       return blockingUnaryCall(
           getChannel(), getListCartMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * clear cart
+     * </pre>
+     */
+    public com.azure.csu.tiger.grpc.lib.ClearCartResponse clearCart(com.azure.csu.tiger.grpc.lib.ClearCartRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getClearCartMethod(), getCallOptions(), request);
     }
   }
 
@@ -299,10 +368,22 @@ public final class UserGrpc {
       return futureUnaryCall(
           getChannel().newCall(getListCartMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * clear cart
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.azure.csu.tiger.grpc.lib.ClearCartResponse> clearCart(
+        com.azure.csu.tiger.grpc.lib.ClearCartRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getClearCartMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_CART = 0;
   private static final int METHODID_LIST_CART = 1;
+  private static final int METHODID_CLEAR_CART = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -328,6 +409,10 @@ public final class UserGrpc {
         case METHODID_LIST_CART:
           serviceImpl.listCart((com.azure.csu.tiger.grpc.lib.ListCartRequest) request,
               (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ListCartResponse>) responseObserver);
+          break;
+        case METHODID_CLEAR_CART:
+          serviceImpl.clearCart((com.azure.csu.tiger.grpc.lib.ClearCartRequest) request,
+              (io.grpc.stub.StreamObserver<com.azure.csu.tiger.grpc.lib.ClearCartResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -392,6 +477,7 @@ public final class UserGrpc {
               .setSchemaDescriptor(new UserFileDescriptorSupplier())
               .addMethod(getAddCartMethod())
               .addMethod(getListCartMethod())
+              .addMethod(getClearCartMethod())
               .build();
         }
       }

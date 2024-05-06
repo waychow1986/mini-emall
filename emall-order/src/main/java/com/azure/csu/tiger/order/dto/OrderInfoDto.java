@@ -1,7 +1,7 @@
 package com.azure.csu.tiger.order.dto;
 
+import com.azure.csu.tiger.grpc.lib.CreateOrderRequest;
 import com.azure.csu.tiger.order.jooq.tables.records.OrderInfoRecord;
-import com.azure.csu.tiger.order.jooq.tables.records.OrderItemRecord;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -73,5 +73,20 @@ public class OrderInfoDto {
         record.setCreateUserId(createUserId);
         record.setModifyUserId(modifyUserId);
         return record;
+    }
+
+    public static OrderInfoDto from(CreateOrderRequest order) {
+        OrderInfoDto dto = new OrderInfoDto();
+        dto.setParentOrderId(-1L);
+        dto.setUserId(order.getUserId());
+        dto.setModifyUserId(order.getUserId());
+        dto.setAddressId(dto.getAddressId());
+        dto.setSourceType(order.getSourceType());
+        dto.setTotalAmount(order.getTotalAmount());
+        dto.setCouponAmount(order.getCouponAmount());
+        dto.setShippingAmount(order.getShippingAmount());
+        dto.setPayAmount(order.getPayAmount());
+        dto.setComment(order.getComment());
+        return dto;
     }
 }

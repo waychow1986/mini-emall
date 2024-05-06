@@ -1,5 +1,7 @@
 package com.azure.csu.tiger.order.service.impl;
 
+import com.azure.csu.tiger.common.utils.OrderNoGenerator;
+import com.azure.csu.tiger.common.utils.OrderStatus;
 import com.azure.csu.tiger.order.dao.OrderInfoDao;
 import com.azure.csu.tiger.order.dao.OrderItemDao;
 import com.azure.csu.tiger.order.dto.OrderInfoDto;
@@ -27,6 +29,8 @@ public class OrderServiceImpl implements OrderService {
         if (dto == null || CollectionUtils.isEmpty(items)) {
             return null;
         }
+        dto.setStatus(OrderStatus.PRE_PAY.getType());
+        dto.setOrderSn(OrderNoGenerator.generateOrder());
         Long id = orderInfoDao.createOrderInfo(dto.toRecord());
         List<OrderItemRecord> itemRecordList = items.stream().map(i -> i.toRecord(id)).collect(Collectors.toList());
         orderItemDao.createOrderItem(itemRecordList);

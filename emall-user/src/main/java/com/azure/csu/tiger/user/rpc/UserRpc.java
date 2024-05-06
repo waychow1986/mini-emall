@@ -44,4 +44,13 @@ public class UserRpc extends UserGrpc.UserImplBase {
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void clearCart(ClearCartRequest request, StreamObserver<ClearCartResponse> responseObserver) {
+        cartDetailService.clearCart(request.getUid());
+        ClearCartResponse response = ClearCartResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
 }

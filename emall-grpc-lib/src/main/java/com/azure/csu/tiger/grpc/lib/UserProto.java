@@ -34,6 +34,16 @@ public final class UserProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ListCartResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClearCartRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClearCartRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClearCartResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClearCartResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -49,11 +59,14 @@ public final class UserProto {
       "code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\"\036\n\017ListCartR" +
       "equest\022\013\n\003uid\030\001 \001(\003\"K\n\020ListCartResponse\022" +
       "\014\n\004code\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\022\030\n\005datas\030" +
-      "\003 \003(\0132\t.CartItem2i\n\004User\022.\n\007addCart\022\017.Ad" +
-      "dCartRequest\032\020.AddCartResponse\"\000\0221\n\010list" +
-      "Cart\022\020.ListCartRequest\032\021.ListCartRespons" +
-      "e\"\000B+\n\034com.azure.csu.tiger.grpc.libB\tUse" +
-      "rProtoP\001b\006proto3"
+      "\003 \003(\0132\t.CartItem\"\037\n\020ClearCartRequest\022\013\n\003" +
+      "uid\030\001 \001(\003\"2\n\021ClearCartResponse\022\014\n\004code\030\001" +
+      " \001(\005\022\017\n\007success\030\002 \001(\0102\237\001\n\004User\022.\n\007addCar" +
+      "t\022\017.AddCartRequest\032\020.AddCartResponse\"\000\0221" +
+      "\n\010listCart\022\020.ListCartRequest\032\021.ListCartR" +
+      "esponse\"\000\0224\n\tclearCart\022\021.ClearCartReques" +
+      "t\032\022.ClearCartResponse\"\000B+\n\034com.azure.csu" +
+      ".tiger.grpc.libB\tUserProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -84,6 +97,18 @@ public final class UserProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListCartResponse_descriptor,
         new java.lang.String[] { "Code", "Success", "Datas", });
+    internal_static_ClearCartRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ClearCartRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClearCartRequest_descriptor,
+        new java.lang.String[] { "Uid", });
+    internal_static_ClearCartResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_ClearCartResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClearCartResponse_descriptor,
+        new java.lang.String[] { "Code", "Success", });
     com.azure.csu.tiger.grpc.lib.BaseProto.getDescriptor();
   }
 

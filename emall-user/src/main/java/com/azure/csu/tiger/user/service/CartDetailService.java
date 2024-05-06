@@ -12,4 +12,6 @@ public interface CartDetailService {
     boolean addCart(Long uid, Long skuId, SkuItemBo skuInfo);
 
     List<CartDetailDTO> getCartDetail(Long uid);
+
+    boolean clearCart(Long uid);
 }

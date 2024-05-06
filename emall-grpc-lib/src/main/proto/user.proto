@@ -13,6 +13,9 @@ service User {
   // list cart
   rpc listCart(ListCartRequest) returns (ListCartResponse) {
   }
+  // clear cart
+  rpc clearCart(ClearCartRequest) returns (ClearCartResponse) {
+  }
 
 }
 
@@ -32,4 +35,11 @@ message ListCartResponse {
   int32 code = 1;
   bool success = 2;
   repeated CartItem datas = 3;
+}
+message ClearCartRequest {
+  int64 uid = 1;
+}
+message ClearCartResponse {
+  int32 code = 1;
+  bool success = 2;
 }

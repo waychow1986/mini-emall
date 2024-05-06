@@ -1,10 +1,8 @@
 package com.azure.csu.tiger.user.service.impl;
 
-import com.azure.csu.tiger.common.config.GrpcSleuthConfig;
 import com.azure.csu.tiger.common.utils.Constant;
 import com.azure.csu.tiger.common.utils.JsonUtil;
 import com.azure.csu.tiger.common.utils.RedisLockUtil;
-import com.azure.csu.tiger.grpc.lib.SkuInfo;
 import com.azure.csu.tiger.user.cache.bo.CartItemBo;
 import com.azure.csu.tiger.user.cache.bo.SkuItemBo;
 import com.azure.csu.tiger.user.dao.CartDetailDao;
@@ -18,7 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -89,5 +87,16 @@ public class CartDetailServiceImpl implements CartDetailService {
             return CartDetailDTO.fromCacheCart(item, uid);
         }).collect(Collectors.toList());
         return dtoList;
+    }
+
+    @Transactional
+    @Override
+    public boolean clearCart(Long uid) {
+        cartDetailDao.clearCart(uid);
+
+        String key = Constant.REDIS_CART_PREFIX + uid;
+        redisTemplate.delete(key);
+
+        return true;
     }
 }
