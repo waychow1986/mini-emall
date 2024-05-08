@@ -6,6 +6,8 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import static com.azure.csu.tiger.order.jooq.Tables.ORDER_INFO;
 
 @Repository
@@ -27,6 +29,12 @@ public class OrderInfoDaoImpl implements OrderInfoDao {
         if (id == null) {
             return null;
         }
-        return context.select().from(ORDER_INFO).where(ORDER_INFO.ID.eq(id)).fetchSingleInto(OrderInfoRecord.class);
+
+        List<OrderInfoRecord> orderInfoRecords = context.select().from(ORDER_INFO).where(ORDER_INFO.ID.eq(id)).fetchInto(OrderInfoRecord.class);
+        if (orderInfoRecords.isEmpty()) {
+            return null;
+        }
+        return orderInfoRecords.get(0);
+//        return context.select().from(ORDER_INFO).where(ORDER_INFO.ID.eq(id)).fetchSingleInto(OrderInfoRecord.class);
     }
 }

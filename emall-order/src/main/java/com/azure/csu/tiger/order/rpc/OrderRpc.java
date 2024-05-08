@@ -38,8 +38,13 @@ public class OrderRpc extends OrderGrpc.OrderImplBase {
     public void getOrder(GetOrderRequest request, StreamObserver<GetOrderResponse> responseObserver) {
         OrderInfo orderInfo = orderService.getOrderInfo(request.getOrderId());
 
-        GetOrderResponse response = GetOrderResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).setData(orderInfo).build();
+        GetOrderResponse response;
 
+        if (orderInfo == null) {
+            response = GetOrderResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).build();
+        } else {
+            response = GetOrderResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).setData(orderInfo).build();
+        }
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }

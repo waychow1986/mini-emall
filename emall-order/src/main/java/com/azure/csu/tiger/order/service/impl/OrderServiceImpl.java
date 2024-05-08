@@ -52,6 +52,9 @@ public class OrderServiceImpl implements OrderService {
             return null;
         }
         OrderInfoRecord orderInfoRecord = orderInfoDao.findOrderInfo(id);
+        if (orderInfoRecord == null) {
+            return null;
+        }
         List<OrderItemRecord> orderItemRecords = orderItemDao.listOrderItems(id);
 
         List<OrderItemSku> orderItemSkus = orderItemRecords.stream().map(i -> OrderItemDto.transformRecordToGrpc(i)).collect(Collectors.toList());

@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-@Api(tags = "Cart Rest API interface")
+@Api(tags = "Order Rest API interface")
 @RefreshScope
 @Controller
 public class OrderController {
