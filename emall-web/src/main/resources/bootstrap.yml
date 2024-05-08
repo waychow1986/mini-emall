@@ -9,6 +9,10 @@ spring:
     name: emall-web
 management:
   context-path: /emall
+  endpoints:
+    web:
+      exposure:
+        include: info,health,prometheus
   health:
     redis:
       enabled: false
