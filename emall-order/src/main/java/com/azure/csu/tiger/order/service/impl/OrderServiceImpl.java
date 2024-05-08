@@ -36,7 +36,12 @@ public class OrderServiceImpl implements OrderService {
         dto.setStatus(OrderStatus.PRE_PAY.getType());
         dto.setOrderSn(OrderNoGenerator.generateOrder());
         Long id = orderInfoDao.createOrderInfo(dto.toRecord());
-        List<OrderItemRecord> itemRecordList = items.stream().map(i -> i.toRecord(id)).collect(Collectors.toList());
+        List<OrderItemRecord> itemRecordList = items.stream().map(i -> {
+            OrderItemRecord orderItemRecord = i.toRecord(id);
+            orderItemRecord.setCreateUserId(dto.getUserId());
+            orderItemRecord.setModifyUserId(dto.getUserId());
+            return orderItemRecord;
+        }).collect(Collectors.toList());
         orderItemDao.createOrderItem(itemRecordList);
         return id;
     }
@@ -46,17 +51,13 @@ public class OrderServiceImpl implements OrderService {
         if (id == null) {
             return null;
         }
-        OrderInfoRecord orderInfo = orderInfoDao.findOrderInfo(id);
-        return OrderInfoDto.transformRecordToGrpc(orderInfo);
+        OrderInfoRecord orderInfoRecord = orderInfoDao.findOrderInfo(id);
+        List<OrderItemRecord> orderItemRecords = orderItemDao.listOrderItems(id);
+
+        List<OrderItemSku> orderItemSkus = orderItemRecords.stream().map(i -> OrderItemDto.transformRecordToGrpc(i)).collect(Collectors.toList());
+        OrderInfo orderInfo = OrderInfoDto.transformRecordToGrpc(orderInfoRecord, orderItemSkus);
+
+        return orderInfo;
     }
 
-    @Override
-    public List<OrderItemSku> getOrderItems(Long orderId) {
-        if (orderId == null) {
-            return Collections.emptyList();
-        }
-        List<OrderItemRecord> orderItemRecords = orderItemDao.listOrderItems(orderId);
-
-        return orderItemRecords.stream().map(i -> OrderItemDto.transformRecordToGrpc(i)).collect(Collectors.toList());
-    }
 }

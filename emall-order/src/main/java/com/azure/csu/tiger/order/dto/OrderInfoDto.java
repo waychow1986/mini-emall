@@ -4,12 +4,14 @@ import com.azure.csu.tiger.common.utils.OrderStatus;
 import com.azure.csu.tiger.common.utils.SourceType;
 import com.azure.csu.tiger.grpc.lib.CreateOrderRequest;
 import com.azure.csu.tiger.grpc.lib.OrderInfo;
+import com.azure.csu.tiger.grpc.lib.OrderItemSku;
 import com.azure.csu.tiger.order.jooq.tables.records.OrderInfoRecord;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -83,8 +85,9 @@ public class OrderInfoDto {
         OrderInfoDto dto = new OrderInfoDto();
         dto.setParentOrderId(-1L);
         dto.setUserId(order.getUserId());
+        dto.setCreateUserId(order.getUserId());
         dto.setModifyUserId(order.getUserId());
-        dto.setAddressId(dto.getAddressId());
+        dto.setAddressId(order.getAddressId());
         dto.setSourceType(order.getSourceType());
         dto.setTotalAmount(order.getTotalAmount());
         dto.setCouponAmount(order.getCouponAmount());
@@ -94,7 +97,7 @@ public class OrderInfoDto {
         return dto;
     }
 
-    public static OrderInfo transformRecordToGrpc(OrderInfoRecord record) {
+    public static OrderInfo transformRecordToGrpc(OrderInfoRecord record, List<OrderItemSku> orderItemSkus) {
 
         return OrderInfo.newBuilder().setUserId(record.getUserId())
                 .setAddress("江苏省南京市")
@@ -109,6 +112,7 @@ public class OrderInfoDto {
                 .setOrderSn(record.getOrderSn())
                 .setCreateTime(record.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .setSendTime("")
-                .setFinishTime("").build();
+                .setFinishTime("")
+                .addAllSkuData(orderItemSkus).build();
     }
 }

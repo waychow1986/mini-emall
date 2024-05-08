@@ -84,4 +84,24 @@ public class CartDetailTest {
 
     }
 
+    @Test
+    public void generateClearCartCsv() {
+        String csvFile = "C:\\Users\\azureuser\\Desktop\\clear_cart.csv";
+        try {
+            FileWriter writer = new FileWriter(csvFile);
+            Random rand = new Random();
+            for (int i = 0; i < 100000; i++) {
+                int uid = i + 1;
+                writer.append(Integer.toString(uid));
+                writer.append("\n");
+            }
+            writer.flush();
+            writer.close();
+            System.out.println("CSV 文件已生成！");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

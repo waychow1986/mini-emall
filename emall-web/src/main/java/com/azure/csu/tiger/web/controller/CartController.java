@@ -93,6 +93,10 @@ public class CartController {
 
         List<CartItem> cartItems = listCartResponse.getDatasList();
 
+        if(cartItems.isEmpty()) {
+            return ResponseEntity.ok("no product in Cart");
+        }
+
         List<OrderItemSku> orderItems = Lists.newArrayList();
 
         Long totalPrice = 0L;
@@ -100,7 +104,7 @@ public class CartController {
         for (CartItem i : cartItems) {
             OrderItemSku orderItemSku = OrderItemSku.newBuilder().setSkuId(i.getSkuId()).setSkuName(i.getName()).setSkuNum(i.getSkuNum()).setSkuPrice(i.getPrice()).setSplitCouponAmount(0).build();
             orderItems.add(orderItemSku);
-            totalPrice = totalPrice + i.getPrice();
+            totalPrice = totalPrice + i.getPrice() * i.getSkuNum();
         }
 
         CreateOrderRequest createOrderRequest = CreateOrderRequest.newBuilder().setUserId(uid).setAddressId(1).setComment("order test").setCouponAmount(0).setShippingAmount(0)

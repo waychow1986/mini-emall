@@ -59,9 +59,7 @@ public class CartDetailDaoImpl implements CartDetailDao {
         if (uid == null) {
             return false;
         }
-        CartDetailRecord record = context.newRecord(CART_DETAIL);
-        record.setUserId(uid);
-        record.delete();
+        context.delete(CART_DETAIL).where(CART_DETAIL.USER_ID.eq(uid)).execute();
         return true;
     }
 

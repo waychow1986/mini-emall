@@ -4,6 +4,7 @@ import com.azure.csu.tiger.common.utils.Constant;
 import com.azure.csu.tiger.grpc.lib.*;
 import com.azure.csu.tiger.order.dto.OrderInfoDto;
 import com.azure.csu.tiger.order.dto.OrderItemDto;
+import com.azure.csu.tiger.order.jooq.tables.records.OrderInfoRecord;
 import com.azure.csu.tiger.order.service.OrderService;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -36,8 +37,6 @@ public class OrderRpc extends OrderGrpc.OrderImplBase {
     @Override
     public void getOrder(GetOrderRequest request, StreamObserver<GetOrderResponse> responseObserver) {
         OrderInfo orderInfo = orderService.getOrderInfo(request.getOrderId());
-        List<OrderItemSku> orderItems = orderService.getOrderItems(request.getOrderId());
-        orderInfo.getSkuDataList().addAll(orderItems);
 
         GetOrderResponse response = GetOrderResponse.newBuilder().setSuccess(true).setCode(Constant.SUCCESS).setData(orderInfo).build();
 
