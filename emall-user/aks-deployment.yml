@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: emall-user
-          image: acrmall.azurecr.io/emall-user:v0.3
+          image: acrmall.azurecr.io/emall-user:v0.1
           resources:
             limits:
               cpu: 2
