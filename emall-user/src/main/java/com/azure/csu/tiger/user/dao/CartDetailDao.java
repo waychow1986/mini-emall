@@ -13,7 +13,7 @@ public interface CartDetailDao {
      * @param skuId
      * @param skuNum
      */
-    Long createCartDetail(Long userid, Long skuId, Long skuNum);
+    void createCartDetail(Long userid, Long skuId, Long skuNum);
 
     /**
      * 批量添加购物车

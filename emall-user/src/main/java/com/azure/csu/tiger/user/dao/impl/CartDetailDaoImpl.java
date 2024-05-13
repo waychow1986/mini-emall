@@ -23,15 +23,21 @@ public class CartDetailDaoImpl implements CartDetailDao {
     private DSLContext context;
 
     @Override
-    public Long createCartDetail(Long userid, Long skuId, Long skuNum) {
+    public void createCartDetail(Long userid, Long skuId, Long skuNum) {
         if (userid == null || skuId == null || skuNum == null) {
-            return null;
+            return;
         }
-        CartDetailRecord record = new CartDetailRecord();
-        record.setUserId(userid);
-        record.setSkuId(skuId);
-        record.setSkuNum(skuNum);
-        return context.insertInto(CART_DETAIL).set(record).returning(CART_DETAIL.ID).fetchOne().getId();
+        InsertValuesStep3<CartDetailRecord, Long, Long, Long> valuesStep3 = context.insertInto(CART_DETAIL)
+                .columns(CART_DETAIL.USER_ID, CART_DETAIL.SKU_ID, CART_DETAIL.SKU_NUM);
+        valuesStep3.values(userid, skuId, skuNum);
+
+        valuesStep3.execute();
+
+//        CartDetailRecord record = new CartDetailRecord();
+//        record.setUserId(userid);
+//        record.setSkuId(skuId);
+//        record.setSkuNum(skuNum);
+//        return context.insertInto(CART_DETAIL).set(record).returning(CART_DETAIL.ID).fetchOne().getId();
     }
 
     @Override
@@ -94,10 +100,11 @@ public class CartDetailDaoImpl implements CartDetailDao {
         if (uid == null || skuId == null || skuNum == null) {
             return false;
         }
-        CartDetailRecord record = context.select().from(CART_DETAIL).where(CART_DETAIL.USER_ID.eq(uid))
-                .and(CART_DETAIL.SKU_ID.eq(skuId)).fetchSingleInto(CartDetailRecord.class);
-        record.setSkuNum(skuNum);
-        record.update(CART_DETAIL.SKU_NUM);
+        context.update(CART_DETAIL).set(CART_DETAIL.SKU_NUM, skuNum).where(CART_DETAIL.USER_ID.eq(uid)).execute();
+//        CartDetailRecord record = context.select().from(CART_DETAIL).where(CART_DETAIL.USER_ID.eq(uid))
+//                .and(CART_DETAIL.SKU_ID.eq(skuId)).fetchSingleInto(CartDetailRecord.class);
+//        record.setSkuNum(skuNum);
+//        record.update(CART_DETAIL.SKU_NUM);
         return true;
     }
 }

@@ -49,6 +49,7 @@ public class CartDetailServiceImpl implements CartDetailService {
             BoundHashOperations<String, Object, Object> hashOperations = redisTemplate.boundHashOps(key);
             String jsonValue = (String) hashOperations.get(String.valueOf(skuId));
             CartItemBo cartItem = JsonUtil.string2Obj(jsonValue, CartItemBo.class);
+            logger.info("jsonValue is: {}", jsonValue);
             long skuNum = 1;
             if (cartItem != null) {
                 skuNum = cartItem.getSkuNum() + skuNum;

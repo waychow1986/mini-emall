@@ -14,9 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmallProductApplication.class)
@@ -163,6 +166,26 @@ public class CategoryTest {
             }
             redisTemplate.opsForValue().multiSet(datas);
         }
+    }
+
+
+    @Test
+    public void generateCategoryIdCsv() {
+        String csvFile = "C:\\Users\\azureuser\\Desktop\\category_id.csv";
+        try {
+            FileWriter writer = new FileWriter(csvFile);
+            Random rand = new Random();
+            for (int i = 10101; i < 10010101; i++) {
+                writer.append(Integer.toString(i));
+                writer.append("\n");
+            }
+            writer.flush();
+            writer.close();
+            System.out.println("CSV 文件已生成！");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test

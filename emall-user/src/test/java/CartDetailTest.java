@@ -104,4 +104,24 @@ public class CartDetailTest {
 
     }
 
+    @Test
+    public void generate10000000Csv() {
+        String csvFile = "C:\\Users\\azureuser\\Desktop\\id-1k.csv";
+        try {
+            FileWriter writer = new FileWriter(csvFile);
+            Random rand = new Random();
+            for (int i = 0; i < 10000000; i++) {
+                int uid = i + 1;
+                writer.append(Integer.toString(uid));
+                writer.append("\n");
+            }
+            writer.flush();
+            writer.close();
+            System.out.println("CSV 文件已生成！");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
